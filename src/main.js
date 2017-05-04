@@ -5,6 +5,8 @@ import Home from './script/components/list/Home.vue'
 Vue.config.productionTip = false
 new Vue({
   el: '#app',
-  template: '<Home />',
+  data: {
+    message: 'hello'
+  },
   components: { Home }
 })
