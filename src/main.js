@@ -8,5 +8,10 @@ new Vue({
   data: {
     message: 'hello'
   },
+  methods:{
+    getdata: function(data){
+      console.log(data)
+    }
+  },
   components: { Home }
 })
