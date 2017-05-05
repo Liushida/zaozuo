@@ -1,9 +1,9 @@
 import Vue from 'vue'
-
 import details from "./script/components/detail/details.vue"
-
-Vue.config.productionTip = false
 import router from './script/router'
+Vue.config.productionTip = false
+
+
 new Vue({
   el: '#app',
   router,
@@ -11,6 +11,6 @@ new Vue({
       return {
 
       }
-  }
+  },
   template: '<router-view></router-view>'
 })
