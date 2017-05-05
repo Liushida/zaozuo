@@ -1,17 +1,11 @@
 import Vue from 'vue'
 import './style/app.scss'
-import Home from './script/components/list/Home.vue'
+
+import router from './script/router'
 
 Vue.config.productionTip = false
 new Vue({
   el: '#app',
-  data: {
-    message: 'hello'
-  },
-  methods:{
-    getdata: function(data){
-      console.log(data)
-    }
-  },
-  components: { Home }
+  router,
+  template: '<router-view></router-view>'
 })
