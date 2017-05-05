@@ -1,4 +1,5 @@
 .m-footer {
   height: .5rem;
-  background: #ccc;
+  background: #fff;
+  @include border(0 0 2px, #ccc, solid);
 }
