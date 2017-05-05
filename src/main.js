@@ -7,5 +7,10 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+  data: function(){
+      return {
+          
+      }
+  }
   template: '<router-view></router-view>'
 })
