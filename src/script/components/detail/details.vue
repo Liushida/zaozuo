@@ -7,8 +7,8 @@
 export default {
   name: "",
   data: function data() {
+      console.log("fuck you");
     return {
-
     }
   }
 }
