@@ -22,7 +22,7 @@ export default new Router({
         },
         {
           path: 'furniture',
-          component: Furniture
+          component: Home
         }
       ]
     },

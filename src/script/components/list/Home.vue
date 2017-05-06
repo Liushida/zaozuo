@@ -14,8 +14,35 @@
           <div class="freePost">免费配送</div>
         </div>
       </div>
-      <div class="item-child"  v-if="item.hasDetail">
-        kong
+      <div class="item-child"  v-if="hide">
+        <div class="detail" v-if="item.children.length <= 3 && item.hasDetail">
+          <div class="detial-item" v-for="(value, index) in item.children" :key="index">
+            <img :src="`http://img.zaozuo.com/${value.headImg}`" alt="">
+          </div>
+        </div>
+        <div class="detail" v-if="item.children.length > 3 && item.hasDetail">
+          <div class="detial-item" v-for="(value, index) in item.children.slice(0, 5)" :key="index">
+            <img :src="`http://img.zaozuo.com/${value.headImg}`" alt="">
+          </div>
+          <div class="detial-item showall" @click="showAll">
+            <div>
+              <span>查看更多</span>
+              <span>more</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="item-child"  v-else>
+        <div class="detail" v-if="item.children.length <= 3 && item.hasDetail">
+          <div class="detial-item" v-for="(value, index) in item.children" :key="index">
+            <img :src="`http://img.zaozuo.com/${value.headImg}`" alt="">
+          </div>
+        </div>
+        <div class="detail" v-if="item.children.length > 3 && item.hasDetail">
+          <div class="detial-item" v-for="(value, index) in item.children" :key="index">
+            <img :src="`http://img.zaozuo.com/${value.headImg}`" alt="">
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -26,7 +53,13 @@ export default {
   name: "",
   data: function data() {
     return {
-      list: []
+      list: [],
+      hide: true
+    }
+  },
+  methods: {
+    showAll: function() {
+      return this.hide = false;
     }
   },
   mounted: function(){
@@ -37,7 +70,6 @@ export default {
       callback: function(res){
         let data = res.data.data.boxCovers;
         that.list = that.list.concat(data.slice(0,1).concat(data.slice(2)));
-        console.log(that.list)
       }
     })
   }
