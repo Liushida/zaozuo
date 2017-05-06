@@ -1,0 +1,60 @@
+@charset "UTF-8";
+.m-lg-box{
+	width:100%;
+	height: 100%;
+	// background: url(/static/images/biz_account_login_bkg_1.png) no-repeat; 
+	background: #4C3F4A;
+	background-size: 100%;
+	padding: .16rem .1rem;
+	.m-lg-back{
+		img{
+			width:.1rem;
+			height: .22rem;
+		}
+		span{
+			margin-left: .1rem;
+			font-size: .15rem;
+			color:#fff;
+		}
+	}
+	.m-lg-logo{
+		padding-top: .5rem;
+		img{
+			width:100%;
+		}
+	}
+	.m-lg-pd{
+		widows: 100%;
+		.m-lg-user,.m-lg-pas{
+			margin:.17rem auto;
+			text-align: center;
+			input{
+				width:85%;
+				height: .5rem;
+				@include border(1px,#fff,solid);
+				background: transparent;
+				padding:.1rem;
+			}
+		}
+		.m-lg-lg{
+			width:85%;
+			height: .5rem;
+			text-align: center;
+			line-height: .5rem;
+			@include border(1px,#fff)
+			background: #fff;
+			margin:  auto ;
+			
+		}
+		
+		.m-lg-mm{
+			color:#fff;
+			padding:.17rem .2rem;
+
+			img{
+				width: .22rem;
+				height: .22rem;
+			}
+		}
+	}
+}

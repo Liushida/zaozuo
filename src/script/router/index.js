@@ -7,6 +7,9 @@ import Furniture from '../components/list/Furniture.vue'
 import Detail from '../components/detail/Detail.vue'
 import Mine from '../components/mine/mine.vue'
 import Lr from '../components/mine/Lr.vue'
+import Login from '../components/mine/Login.vue'
+import Register from '../components/mine/Register.vue'
+
 
 
 Vue.use(Router)
@@ -43,6 +46,14 @@ export default new Router({
     {
       path:'/lr',
       component:Lr
+    },
+    {
+      path:'/login',
+      component:Login
+    },
+    {
+      path:'/register',
+      component:Register
     }
   ]
 })

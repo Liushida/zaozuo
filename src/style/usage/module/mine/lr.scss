@@ -26,19 +26,21 @@
 	.m-lr-pd{
 		padding-top: 1.8rem;
 		.m-lr-login{
+			display: block;
 			width:2.71rem;
 			height: .5rem;
 			background: #fff;
 			text-align: center;
 			line-height: .5rem;
 			margin: .17rem auto;
+			color:#000;
 		}
 		.m-lr-dl{
 			@include flexbox();
 			@include justify-content(space-between);
 			width:2.71rem;
 			margin:auto;
-			span{
+			a{
 				@include border(1px,#fff)
 				display: inline-block;
 				width:1.31rem;
