@@ -5,8 +5,10 @@ import Home from '../components/list/Home.vue'
 import Search from '../components/list/Search.vue'
 import Furniture from '../components/list/Furniture.vue'
 import Detail from '../components/detail/Detail.vue'
+import Mine from '../components/mine/mine.vue'
 
 Vue.use(Router)
+
 export default new Router({
   routes: [
     {
@@ -31,6 +33,10 @@ export default new Router({
     {
         path: '/detail',
         component: Detail
+    },
+    {
+      path:'/mine',
+      component: Mine
     }
   ]
 })

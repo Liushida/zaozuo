@@ -1,17 +1,26 @@
 <template>
   <div class='m-index'>
-    <header>header</header>
-    <section>
+    <Header/>
+    <main>
       <router-view></router-view>
-    </section>
-    <footer>
-      <router-link to="/home">Go to home</router-link>
-      <router-link to="/furniture">Go to furniture</router-link>
-      <router-link to="/search">Go to search</router-link>
-    </footer>
+    </main>
+    <Footer />
   </div>
 </template>
 <script>
+import Header from '../common/Header.vue'
+import Footer from '../common/Footer.vue'
+import axios from '../../utils/axios.js';
 export default {
+  components: { Header, Footer },
+  mounted: function(){
+    axios.all({
+      type: 'get',
+      url: 'api/paper/13',
+      callback: function(res){
+        console.log(res)
+      }
+    })
+  }
 }
 </script>
