@@ -1,0 +1,17 @@
+.m-footer {
+  height: .5rem;
+  background: #fff;
+  @include border(0 0 2px, #ccc, solid);
+  @include flexbox();
+  a {
+    width: .75rem;
+    line-height: .5rem;
+    text-align: center;
+    padding: 0 .08rem;
+    color:#000;
+    &.active {
+      // text-decoration: underline;
+      @include border(0 0 5px, #000, solid);
+    }
+  }
+}

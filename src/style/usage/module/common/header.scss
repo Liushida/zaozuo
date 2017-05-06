@@ -1,0 +1,29 @@
+.m-header {
+  height: .5rem;
+  background: #fff;
+  width: 100%;
+  @include flexbox();
+  padding: 0 .17rem;
+  .logo {
+    height: 100%;
+    width: 1.2rem;
+    @include flexbox();
+    @include flex-direction();
+    @include align-items();
+    img {
+      height: 50%;
+      width: 100%;
+    }
+  }
+  .empty {
+    @include flex();
+  }
+  .cart, .me, .search{
+    width: .5rem;
+    height: 100%;
+    img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
