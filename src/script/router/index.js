@@ -5,6 +5,9 @@ import Home from '../components/list/Home.vue'
 import Search from '../components/list/Search.vue'
 import Furniture from '../components/list/Furniture.vue'
 
+
+import Mine from '../components/mine/mine.vue'
+
 Vue.use(Router)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
 
 export default new Router({
@@ -27,6 +30,10 @@ export default new Router({
     {
       path: '/search',
       component: Search
+    },
+    {
+      path:'/mine',
+      component: Mine
     }
   ]
 })
