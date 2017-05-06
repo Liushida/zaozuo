@@ -36,7 +36,7 @@ module.exports = {
         target: 'http://api.zaozuo.com/',
         changeOrigin: true,
         pathRewrite: {
-          '^proxy': ''
+          '/^proxy': ''
         }
       }
     },
