@@ -1,18 +1,18 @@
 <template>
   <div class='m-index'>
-    <Header/>
+    <mHeader/>
     <main>
       <router-view></router-view>
     </main>
-    <Footer />
+    <mFooter />
   </div>
 </template>
 <script>
-import Header from '../common/Header.vue'
-import Footer from '../common/Footer.vue'
+import mHeader from '../common/Header.vue'
+import mFooter from '../common/Footer.vue'
 import axios from '../../utils/axios.js';
 export default {
-  components: { Header, Footer },
+  components: { mHeader, mFooter },
   mounted: function(){
     axios.all({
       type: 'get',

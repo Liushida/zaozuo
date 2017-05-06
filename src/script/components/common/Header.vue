@@ -10,7 +10,7 @@
     <div class="me">
       <img src="/static/images/biz_res_nav_me_normal.png" alt="">
     </div>
-    <div class="cart">
+    <div class="cart" >
       <img src="/static/images/biz_res_nav_cart_normal.png" alt="">
     </div>
   </header>

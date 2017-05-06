@@ -4,8 +4,10 @@ import Index from '../components/list/Index.vue'
 import Home from '../components/list/Home.vue'
 import Search from '../components/list/Search.vue'
 import Furniture from '../components/list/Furniture.vue'
-import Mine from '../components/mine/mine.vue'
 import Detail from '../components/detail/Detail.vue'
+import Mine from '../components/mine/mine.vue'
+import Lr from '../components/mine/Lr.vue'
+
 
 Vue.use(Router)
 
@@ -35,8 +37,12 @@ export default new Router({
       component: Mine
     },
     {
-        path: '/detail',
-        component: Detail
+      path: '/detail',
+      component: Detail
+    },
+    {
+      path:'/lr',
+      component:Lr
     }
   ]
 })
