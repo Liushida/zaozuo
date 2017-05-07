@@ -3,20 +3,45 @@
   background: #fff;
   width: 100%;
   @include flexbox();
+  @include flex-direction(row-reverse);
   padding: 0 .17rem;
   .logo {
     height: 100%;
-    width: 1.2rem;
+    @include flex();
     @include flexbox();
     @include flex-direction();
     @include align-items();
-    img {
+    > img {
       height: 50%;
-      width: 100%;
+      width: 60%;
     }
-  }
-  .empty {
-    @include flex();
+    .backBox {
+      height: 100%;
+      width: 100%;
+      @include flexbox();
+      .back {
+        height: 100%;
+        width: .5rem;
+        @include flexbox();
+        @include align-items();
+        img {
+          height: 70%;
+          width: 70%;
+        }
+        .border {
+          height: 70%;
+          @include border(0 3px 0 0, #ececec, solid);
+        }
+      }
+      .home {
+        height: 100%;
+        width: .5rem;
+        img {
+          height: 100%;
+          width: 100%;
+        }
+      }
+    }
   }
   .cart, .me, .search{
     width: .5rem;

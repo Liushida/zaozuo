@@ -1,4 +1,102 @@
 main {
   @include flex();
   width: 100%;
+  overflow:hidden;
+  .list-main{
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+    .item {
+      min-height: 3.28rem;
+      width: 100%;
+      .item-main{
+        .img {
+          height: 2.11rem;
+          width: 100%;
+          img {
+            height: 100%;
+            width: 100%;
+          }
+        }
+        .info {
+          min-height: 1.16rem;
+          width: 100%;
+          @include flexbox();
+          @include flex-direction(column);
+          padding: .2rem .17rem;
+          span {
+            display: block;
+          }
+          .top {
+            height: .16rem;
+            width: 100% !important;
+            font-size: .16rem;
+            line-height: .16rem;
+            @include flexbox();
+            @include flex-direction(row-reverse);
+            .title {
+              @include flex();
+              height: 100%;
+              font-weight: 600;
+            }
+            .price {
+              font-weight: 600;
+              width: .6rem;
+              height: 100%;
+              text-align: right;
+            }
+          }
+          .content {
+            min-heihgt: .24rem;
+            line-height: .24rem;
+            font-size: .12rem;
+          }
+          .freePost {
+            color: #b87d7b;
+            line-height: .2rem;
+            font-size: .12rm;
+          }
+        }
+      }
+      .item-child{
+        min-height: 0rem;
+        width: 100%;
+        .detail {
+          height: 100%;
+          width: 100%;
+          @include flexbox();
+          @include flex-wrap(wrap);
+          .detial-item {
+            height: 1.25rem;
+            width: 33%;
+            padding: .1rem;
+            img{
+              height: 100%;
+              width:100%;
+            }
+          }
+          .showall{
+            height: 1.25rem;
+            width: 33%;
+            @include flexbox();
+            @include align-items();
+            @include justify-content();
+            div {
+              height: .8rem;
+              width: .8rem;
+              @include border(10px, #d1d1d1, solid)
+              @include flexbox();
+              @include flex-direction(column);
+              @include align-items();
+              @include justify-content();
+              span {
+                font-size: .12rem;
+                color: #868686;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }

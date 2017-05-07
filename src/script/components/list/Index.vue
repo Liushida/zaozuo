@@ -1,26 +1,22 @@
 <template>
   <div class='m-index'>
-    <mHeader/>
+    <Header :canBack="false"/>
     <main>
       <router-view></router-view>
     </main>
-    <mFooter />
+    <Footer/>
   </div>
 </template>
 <script>
-import mHeader from '../common/Header.vue'
-import mFooter from '../common/Footer.vue'
-import axios from '../../utils/axios.js';
+import Vue from 'vue'
+import Header from '../common/Header.vue'
+import Footer from '../common/Footer.vue'
+Vue.component('Header',Header);
+Vue.component('Footer',Footer);
 export default {
-  components: { mHeader, mFooter },
-  mounted: function(){
-    axios.all({
-      type: 'get',
-      url: 'api/paper/13',
-      callback: function(res){
-        console.log(res)
-      }
-    })
+  data: function(){
+    return {
+    }
   }
 }
 </script>
