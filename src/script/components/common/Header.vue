@@ -42,7 +42,7 @@ export default {
   props: {
     canBack: {
       type: Boolean,
-      required: true
+      required: false
     }
   },
   methods:{

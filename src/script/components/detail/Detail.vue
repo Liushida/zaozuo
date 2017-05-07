@@ -1,6 +1,6 @@
 <template>
   <div id="details">
-      <Header />
+      <Header :canBack="true"/>
       <ul class="nav">
           <li class="active">作品</li>
           <li>参数</li>
@@ -86,9 +86,11 @@
   </div>
 </template>
 <script>
-import Header from "../common/Header.vue"
+import Vue from "vue";
+import Header from "../common/Header.vue";
+Vue.component("Header", Header);
 export default {
-    components:{Header}
+
 }
 </script>
 <style>
