@@ -70,13 +70,20 @@ export default {
       }
     },
     search: function(name,tagId){
+      // let obj = {}
+      // obj[name] = tagId;
+      // this.tagIds = Object.assign(this.tagIds, obj)
+      // console.log(this.tagIds)
       this.tagIds[name] =  tagId;
       console.log(this.tagIds)
     }
   },
   watch:{
-    tagIds: function(){
-      console.log(1)
+    tagIds: {
+      handler: function () {
+        console.log(2)
+      },
+      deep: true
     }
   },
   mounted: function(){

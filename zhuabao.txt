@@ -17,6 +17,9 @@ http://zaozuo.com/about/us
 
 
 首页进详情
+
+http://api.zaozuo.com/app/item/300100/exp?boxId=1041
+
 http://api.zaozuo.com/app/item/300150/exp?boxId=1420
 http://api.zaozuo.com/box/buy?ref=5&refId=300150&subref=20&subrefId=
 http://api.zaozuo.com/item/talk?type=6&itemId=300150
