@@ -1,9 +1,28 @@
 <template>
   <div class="search">
     <Header :canBack="true"/>
-    <div class="classify">
-      <div class="item" v-for="(item, index) in tagList" :key="index">
-        
+    <div class="listHeader">
+      <div class="classifyBox">
+        <div class="classifyItem" v-for="(item, index) in tagList" :key="index" @click="showWho(item.name)">
+          <span>{{item.name}}</span>
+          <div class="img">
+            <img src="/static/images/biz_order_orderconfirm_btn_down.png" alt="">
+          </div>
+        </div>
+      </div>
+      <div class="tagsBox">
+        <div class="box" v-if="classLeft">
+          <div class="tagItem" v-for="(item, index) in tagList[0].children" :key="index">
+            <img :src="`http://img.zaozuo.com/${item.iconNormal}`" alt="">
+            <span>{{item.name}}</span>
+          </div>
+        </div>
+        <div class="box" v-if="classRight">
+          <div class="tagItem" v-for="(item, index) in tagList[1].children" :key="index">
+            <img :src="`http://img.zaozuo.com/${item.iconNormal}`" alt="">
+            <span>{{item.name}}</span>
+          </div>
+        </div>
       </div>
     </div>
     <div class="itemList">
@@ -31,7 +50,20 @@ export default {
   data: function() {
     return {
       tagList: [],
-      itemList: []
+      itemList: [],
+      classLeft: false,
+      classRight: false
+    }
+  },
+  methods:{
+    showWho: function(name){
+      if(name == '品类'){
+        this.classLeft = true;
+        this.classRight = false;
+      }else if(name == '场景'){
+        this.classLeft = false;
+        this.classRight = true;
+      }
     }
   },
   mounted: function(){

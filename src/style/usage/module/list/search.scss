@@ -3,10 +3,58 @@
   width: 100%;
   @include flexbox();
   @include flex-direction(column);
-  .classify {
+  .listHeader {
     height: .5rem;
     width: 100%;
-    background: green;
+    .classifyBox {
+      height: 100%;
+      width: 100% !important;
+      @include flexbox();
+      .classifyItem{
+        width: 50%;
+        height: 100%;
+        @include flexbox();
+        @include justify-content();
+        @include align-items();
+        span {
+          font-size: .16rem;
+          color: #858585;
+        }
+        .img{
+          width: .2rem;
+          height: .2rem;
+          img{
+            height: 100%;
+            width: 100%;
+          }
+        }
+      }
+    }
+    .tagsBox{
+      position: relative;
+      z-index: 99999;
+      width: 100% !important;
+      min-height: 1rem;
+      .box{
+        min-height: 1rem;
+        width: 100% !important;
+        @include flexbox();
+        @include flex-wrap(wrap);
+        background: #ccc;
+        .tagItem {
+          width: 25%;
+          height: .88rem;
+          @include flexbox();
+          @include flex-direction(column);
+          @include justify-content();
+          @include align-items();
+          img{
+            height: 40%;
+            width: 40%;
+          }
+        }
+      }
+    }
   }
   .itemList{
     @include flex();
