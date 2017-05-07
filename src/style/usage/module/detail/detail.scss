@@ -169,6 +169,13 @@
                     color:#fff;
                 }
                 .messge{
+                    ::after{
+                        display: block;
+                        width:.85rem;
+                        height:.04rem;
+                        background: #a4a4a4;
+                        margin: .2rem 0;
+                    }
                     margin:0 .23rem;
                     color:#fff;
                     max-height: 1.65rem;
@@ -180,13 +187,6 @@
                     -webkit-box-orient: vertical;
                     -webkit-line-clamp: 3;
                     overflow: hidden;
-                    span{
-                        display: block;
-                        width:.85rem;
-                        height:.04rem;
-                        background: #a4a4a4;
-                        margin: .2rem 0;
-                    }
                 }
                 a{
                     margin-left: .23rem;;
@@ -245,6 +245,6 @@
                 }
             }
         }
-        
+
     }
 }

@@ -5,12 +5,15 @@ import Home from '../components/list/Home.vue'
 import Search from '../components/list/Search.vue'
 import Furniture from '../components/list/Furniture.vue'
 import Detail from '../components/detail/Detail.vue'
+import DetailIndex from '../components/detail/DetailIndex.vue'
 import Mine from '../components/mine/mine.vue'
 import Lr from '../components/mine/Lr.vue'
 import Login from '../components/mine/Login.vue'
 import Register from '../components/mine/Register.vue'
 import Scene from '../components/list/Scene.vue'
 import We from '../components/list/We.vue'
+
+import Test from '../components/detail/Test.vue'
 
 
 Vue.use(Router)
@@ -55,6 +58,14 @@ export default new Router({
     {
       path: '/detail',
       component: Detail
+    //   ,
+    //   redirect:Detail,
+    //   children:[
+    //       {
+    //           path:"detail_index",
+    //           component:DetailIndex
+    //       }
+    //   ]
     },
     {
       path:'/lr',
@@ -67,6 +78,11 @@ export default new Router({
     {
       path:'/register',
       component:Register
-    }
+  },
+    {
+        //测试
+      path:'/test',
+      component: Test
+    },
   ]
 })
