@@ -1,6 +1,6 @@
 <template>
   <div id="details">
-      <Header />
+      <Header :canBack="true"/>
       <ul class="nav">
           <li class="active">作品</li>
           <li>参数</li>
@@ -75,20 +75,75 @@
           <div class="showVideo">
               <img src="http://img.zaozuo.com/e5d8be95a360efffc60757f82e363c22" alt="">
               <div class="showposi">
-                  <video src="http://zz-imgs.oss-cn-hangzhou.aliyuncs.com/chaoji-gif-wagell.mp4" preload  poster="posterimage.jpg">
-
-                  </video>
+                  <div class="authorImg">
+                      <img src="http://img.zaozuo.com/57adc4879f9cd67acdf76017b6e81b27@!small" alt="">
+                  </div>
+                  <h1>Jonas Wagell</h1>
+                  <p>Sweden | Stockholm</p>
+                  <div class="messge">
+                      <span></span>
+                      2014年EDIDA国际设计大奖得主，Elle Decoration瑞典设计奖得主；2014年 年度灯具设计奖”Cloud”设计者；2008年WallPaper杂志全球50位热门年轻设计师得主。瑞典建筑师、设计师、造作首批签约设计师。他的设计以极简和童趣著称，尤其擅⻓为紧凑空间设计功能性产品。“家具设计应注重功能，而不是艺术。我希望我的设计成为⽇常生活的一部分。设计中的情感，比奢华材质更重要。我在努力创造简单⽽直观，但又有个人趣味的东西。我叫它generous minimalism”。
+                  </div>
+                  <a href="">了解更多></a>
               </div>
-              <h1>Jonas Wagell</h1>
-              <p>Sweden | Stockholm</p>
+          </div>
+          <div class="zhanshi">
+              <p>转角</p>
+              <div class="zsImg">
+                  <img src="http://img.zaozuo.com/b9b4967d0aa1d774914f7fbef941f28a?x-oss-process=image/format,jpg/interlace,1" alt="">
+              </div>
+              <dl class="zsStyle">
+                  <dd class="">
+                      <div class="active">
+                          <img src="http://img.zaozuo.com/cb0ac1a77cb1ce7bfd5768ae273a79d0@!small" alt="">
+                      </div>
+                      <div class="">
+                          <img src="http://img.zaozuo.com/cb0ac1a77cb1ce7bfd5768ae273a79d0@!small" alt="">
+                      </div>
+                      <div class="">
+                          <img src="http://img.zaozuo.com/cb0ac1a77cb1ce7bfd5768ae273a79d0@!small" alt="">
+                      </div>
+                      <div class="">
+                          <img src="http://img.zaozuo.com/cb0ac1a77cb1ce7bfd5768ae273a79d0@!small" alt="">
+                      </div>
+                      <div class="">
+                          <img src="http://img.zaozuo.com/cb0ac1a77cb1ce7bfd5768ae273a79d0@!small" alt="">
+                      </div>
+                  </dd>
+              </dl>
+          </div>
+          <div class="">
+              
           </div>
       </div>
   </div>
 </template>
 <script>
+import Vue from "vue"
 import Header from "../common/Header.vue"
+import axios from "../../utils/axios.js"
+Vue.component("Header",Header)
 export default {
-    components:{Header}
+    name: "",
+    data: function data() {
+      return {
+        list: []
+      }
+    },
+    methods: {
+
+    },
+    mounted: function(){
+    //   let that = this;
+    //   axios.all({
+    //     type: 'get',
+    //     url: `proxy/app/item/300150`,
+    //     callback: function(res){
+    //       let data = res.data.data.categoryName;
+    //      console.log(data);
+    //     }
+    //   })
+    }
 }
 </script>
 <style>
