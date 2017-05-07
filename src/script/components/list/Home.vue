@@ -63,7 +63,6 @@ export default {
     }
   },
   mounted: function(){
-    console.log(this.$route.params.type)
     let type = this.$route.params.type || '13';
     let that = this;
     axios.all({

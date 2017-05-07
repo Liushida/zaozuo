@@ -2,17 +2,20 @@
   <header class="m-header">
     <div class="cart">
       <router-link to="">
-        <img src="/static/images/biz_res_nav_cart_normal.png" alt="">
+        <img v-if="false" src="/static/images/biz_res_nav_cart_pressed.png" alt="">
+        <img v-else src="/static/images/biz_res_nav_cart_normal.png" alt="">
       </router-link>
     </div>
     <div class="me">
       <router-link to="/mine">
-        <img src="/static/images/biz_res_nav_me_normal.png" alt="">
+        <img v-if="this.$route.fullPath.substr(1) == 'mine'" src="/static/images/biz_res_nav_me_pressed.png" alt="">
+        <img v-else src="/static/images/biz_res_nav_me_normal.png" alt="">
       </router-link>
     </div>
     <div class="search">
       <router-link to="/search">
-        <img src="/static/images/biz_res_nav_search_normal.png" alt="">
+        <img v-if="this.$route.fullPath.substr(1) == 'search'" src="/static/images/biz_res_nav_search_pressed.png" alt="">
+        <img v-else src="/static/images/biz_res_nav_search_normal.png" alt="">
       </router-link>
     </div>
     <div class="logo" v-if="!canBack">
