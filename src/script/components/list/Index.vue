@@ -1,6 +1,6 @@
 <template>
   <div class='m-index'>
-    <Header />
+    <Header :canBack="false"/>
     <main>
       <router-view></router-view>
     </main>

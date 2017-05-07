@@ -68,7 +68,7 @@ main {
           @include flex-wrap(wrap);
           .detial-item {
             height: 1.25rem;
-            width: 1.25rem;
+            width: 33%;
             padding: .1rem;
             img{
               height: 100%;
@@ -77,7 +77,7 @@ main {
           }
           .showall{
             height: 1.25rem;
-            width: 1.25rem;
+            width: 33%;
             @include flexbox();
             @include align-items();
             @include justify-content();

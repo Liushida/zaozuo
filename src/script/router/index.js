@@ -6,6 +6,8 @@ import Search from '../components/list/Search.vue'
 import Furniture from '../components/list/Furniture.vue'
 import Mine from '../components/mine/mine.vue'
 import Detail from '../components/detail/Detail.vue'
+import Scene from '../components/list/Scene.vue'
+import We from '../components/list/We.vue'
 
 Vue.use(Router)
 
@@ -21,8 +23,20 @@ export default new Router({
           component: Home
         },
         {
-          path: 'furniture',
+          path: 'furniture/:type',
           component: Home
+        },
+        {
+          path: 'house/:type',
+          component: Home
+        },
+        {
+          path: 'scene',
+          component: Scene
+        },
+        {
+          path: 'we',
+          component: We
         }
       ]
     },

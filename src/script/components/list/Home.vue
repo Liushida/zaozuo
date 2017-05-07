@@ -63,10 +63,12 @@ export default {
     }
   },
   mounted: function(){
+    console.log(this.$route.params.type)
+    let type = this.$route.params.type || '13';
     let that = this;
     axios.all({
       type: 'get',
-      url: 'api/paper/13',
+      url: `api/paper/${type}`,
       callback: function(res){
         let data = res.data.data.boxCovers;
         that.list = that.list.concat(data.slice(0,1).concat(data.slice(2)));
