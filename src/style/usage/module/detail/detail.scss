@@ -1,6 +1,9 @@
 #details{
+    @include flexbox();
+    @include flex-direction(column);
     @include flex();
     width: 100%;
+    height: 100%;
     .nav{
         width: 100%;
         height: .61rem;
@@ -22,6 +25,133 @@
             }
             &.active{
                 color: #000;
+            }
+        }
+    }
+    .scroll{
+        width: 100% !important;
+        height: 100%;
+        overflow-y:scroll;
+        @include flexbox();
+        @include flex-direction(column);
+        @include flex();
+        .showdetail{
+            width: 100%;
+            height: 2.95rem;
+            .showImg{
+                height: 2.125rem;
+                img{
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            .showTitle{
+                padding:.2rem 0;
+                margin:0 .18rem;
+                position: relative;
+                @include border(0 0 1px 0,#d6d6d6,solid);
+                h1{
+                    font-size: .18rem;
+                }
+                p{
+                    font-size: .135rem;
+                }
+                .sAs{
+                    position: absolute;
+                    top: .22rem;
+                    right:0;
+                    span{
+                        padding-left:.22rem ;
+                        width:.52rem;
+                        display: inline-block;
+                    }
+                    span:first-child{
+                        background: url(/static/images/biz_show_fav_default.png) no-repeat;
+                        background-size: .18rem;
+                        margin-right: .22rem;
+                    }
+                    span:last-child{
+                        background: url(/static/images/biz_show_share_default.png) no-repeat;
+                        background-size: .18rem;
+                    }
+                }
+            }
+        }
+        .chooseStyle{
+            width: 100%;
+            // padding: .2rem 0;
+            margin:0 .18rem;
+            .styleColor{
+                padding: .1rem 0;
+                dt{
+                    font-size: .155rem;
+                    margin-bottom: .125rem;
+                }
+                dd{
+                    width: 100%;
+                    div{
+                        display: inline-block;
+                        width: .38rem;
+                        height: .38rem;
+                        @include border(.02rem,#d2d2d2,solid);
+                        padding: .045rem;
+                        margin-right: .23rem;
+                        margin-bottom:.1rem;
+                        img{
+                            width: 100%;
+                            height:100%;
+                        }
+                        &.active{
+                            @include border(.03rem,#000,solid);
+                            background: url(/static/images/biz_order_buyconfirm_select_triangle.png) no-repeat right bottom;
+                            background-size: .08rem;
+                        }
+                    }
+                }
+            }
+            .styleStyle,.styleOther{
+                padding: .1rem 0;
+                dt{
+                    font-size: .155rem;
+                    margin-bottom: .125rem;
+                }
+                dd{
+                    width:100%;
+                    div{
+                        display: inline-block;
+                        @include border(.02rem,#d2d2d2,solid);
+                        padding: 0 .18rem;
+                        margin-bottom:.1rem;
+                        margin-right: .23rem;
+                        font-size: .12rem;
+                        text-align: center;
+                        line-height: .39rem;
+                        &.active{
+                            @include border(.03rem,#000,solid);
+                            background: url(/static/images/biz_order_buyconfirm_select_triangle.png) no-repeat right bottom;
+                            background-size: .08rem;
+                        }
+                    }
+                }
+            }
+        }
+        .showVideo{
+            position: relative;
+            width: 100%;
+            height: 3.07rem;
+            img{
+                width:100%;
+                height: 100%;
+            }
+            .showposi{
+                position: absolute;
+                top: 0;
+                left: 0;
+                video{
+                    width: .83rem;
+                    height: .83rem;
+                    border-radius: 50%;
+                }
             }
         }
     }
