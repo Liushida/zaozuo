@@ -70,18 +70,49 @@ export default {
       }
     },
     search: function(name,tagId){
-      // let obj = {}
-      // obj[name] = tagId;
-      // this.tagIds = Object.assign(this.tagIds, obj)
-      // console.log(this.tagIds)
-      this.tagIds[name] =  tagId;
-      console.log(this.tagIds)
+      let obj = {};
+      obj[name] = tagId;
+      this.tagIds = this.objToOne(this.tagIds,obj);
+    },
+    objToOne: function(obj1, obj2){
+      let res = {}
+      for(let i in obj1){
+        res[i] = obj1[i]
+      }
+      for (let p in obj2){
+        res[p]=obj2[p];
+      }
+      return res;
     }
   },
   watch:{
     tagIds: {
       handler: function () {
-        console.log(2)
+        let a = this.tagIds['品类'];
+        let b = this.tagIds['场景'];
+        let c = '';
+        if(a == undefined){
+          c = b;
+        }else if(b == undefined){
+          c = a;
+        }else{
+          c = a + ',' + b;
+        }
+        console.log(c)
+        this.show = false;
+        let that = this;
+        axios.all({
+          type: 'get',
+          url: `/proxy/app/search`,
+          data: {
+            page: 1,
+            tags: c
+          },
+          callback: function(res){
+            console.log(res)
+            // that.itemList = that.itemList.push(res.data.data.items);
+          }
+        })
       },
       deep: true
     }
