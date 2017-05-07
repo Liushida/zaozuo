@@ -11,6 +11,8 @@ import Login from '../components/mine/Login.vue'
 import Register from '../components/mine/Register.vue'
 import Scene from '../components/list/Scene.vue'
 import We from '../components/list/We.vue'
+import Buycart from '../components/buycart/Buycart.vue'
+
 
 
 Vue.use(Router)
@@ -67,6 +69,10 @@ export default new Router({
     {
       path:'/register',
       component:Register
+    },
+    {
+      path:'/buycart',
+      component:Buycart
     }
   ]
 })
