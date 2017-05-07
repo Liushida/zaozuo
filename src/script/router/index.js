@@ -9,7 +9,8 @@ import Mine from '../components/mine/mine.vue'
 import Lr from '../components/mine/Lr.vue'
 import Login from '../components/mine/Login.vue'
 import Register from '../components/mine/Register.vue'
-
+import Scene from '../components/list/Scene.vue'
+import We from '../components/list/We.vue'
 
 
 Vue.use(Router)
@@ -26,8 +27,20 @@ export default new Router({
           component: Home
         },
         {
-          path: 'furniture',
-          component: Furniture
+          path: 'furniture/:type',
+          component: Home
+        },
+        {
+          path: 'house/:type',
+          component: Home
+        },
+        {
+          path: 'scene',
+          component: Scene
+        },
+        {
+          path: 'we',
+          component: We
         }
       ]
     },

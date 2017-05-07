@@ -1,12 +1,9 @@
 <template>
   <div id="">
-    <Header :canBack="true"/>
+    ljljj
   </div>
 </template>
 <script>
-import Vue from 'vue'
-import Header from '../common/Header.vue'
-Vue.component('Header',Header);
 export default {
   name: "",
   data: function data() {
