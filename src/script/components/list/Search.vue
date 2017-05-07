@@ -10,15 +10,15 @@
           </div>
         </div>
       </div>
-      <div class="tagsBox">
+      <div class="tagsBox" v-if="show">
         <div class="box" v-if="classLeft">
-          <div class="tagItem" v-for="(item, index) in tagList[0].children" :key="index">
+          <div class="tagItem" v-for="(item, index) in tagList[0].children" :key="index" @click="search(tagList[0].name,item.tagId)">
             <img :src="`http://img.zaozuo.com/${item.iconNormal}`" alt="">
             <span>{{item.name}}</span>
           </div>
         </div>
         <div class="box" v-if="classRight">
-          <div class="tagItem" v-for="(item, index) in tagList[1].children" :key="index">
+          <div class="tagItem" v-for="(item, index) in tagList[1].children" :key="index" @click="search(tagList[1].name,item.tagId)">
             <img :src="`http://img.zaozuo.com/${item.iconNormal}`" alt="">
             <span>{{item.name}}</span>
           </div>
@@ -52,7 +52,9 @@ export default {
       tagList: [],
       itemList: [],
       classLeft: false,
-      classRight: false
+      classRight: false,
+      show: false,
+      tagIds: {}
     }
   },
   methods:{
@@ -60,10 +62,21 @@ export default {
       if(name == '品类'){
         this.classLeft = true;
         this.classRight = false;
+        this.show = true;
       }else if(name == '场景'){
         this.classLeft = false;
         this.classRight = true;
+        this.show = true;
       }
+    },
+    search: function(name,tagId){
+      this.tagIds[name] =  tagId;
+      console.log(this.tagIds)
+    }
+  },
+  watch:{
+    tagIds: function(){
+      console.log(1)
     }
   },
   mounted: function(){
@@ -81,8 +94,7 @@ export default {
             page: 1
           },
           callback: function(res){
-            that.itemList = that.itemList.concat(res.data.data.items)
-            console.log(this.itemList)
+            that.itemList = that.itemList.concat(res.data.data.items);
           }
         })
       }
