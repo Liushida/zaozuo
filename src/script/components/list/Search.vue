@@ -12,13 +12,13 @@
       </div>
       <div class="tagsBox" v-if="show">
         <div class="box" v-if="classLeft">
-          <div class="tagItem" v-for="(item, index) in tagList[0].children" :key="index" @click="search(tagList[0].name,item.tagId)">
+          <div class="tagItem" v-for="(item, index) in tagList[0].children" :key="index" @click="search(tagList[0].name,item.tagId,item.name)">
             <img :src="`http://img.zaozuo.com/${item.iconNormal}`" alt="">
             <span>{{item.name}}</span>
           </div>
         </div>
         <div class="box" v-if="classRight">
-          <div class="tagItem" v-for="(item, index) in tagList[1].children" :key="index" @click="search(tagList[1].name,item.tagId)">
+          <div class="tagItem" v-for="(item, index) in tagList[1].children" :key="index" @click="search(tagList[1].name,item.tagId,item.name)">
             <img :src="`http://img.zaozuo.com/${item.iconNormal}`" alt="">
             <span>{{item.name}}</span>
           </div>
@@ -78,9 +78,9 @@ export default {
         this.show = true;
       }
     },
-    search: function(name,tagId){
+    search: function(typeName,tagId,tagName){
       let obj = {};
-      obj[name] = tagId;
+      obj[typeName] = tagId;
       this.tagIds = this.objToOne(this.tagIds,obj);
     },
     getTags: function(){
