@@ -35,7 +35,9 @@
         @include flexbox();
         @include flex-direction(column);
         @include flex();
+        background: #ddd;
         .showdetail{
+            background: #fff;
             width: 100%;
             height: 2.95rem;
             .showImg{
@@ -78,9 +80,9 @@
             }
         }
         .chooseStyle{
+            background: #fff;
             width: 100%;
-            // padding: .2rem 0;
-            margin:0 .18rem;
+            padding:0 .18rem;
             .styleColor{
                 padding: .1rem 0;
                 dt{
@@ -136,9 +138,10 @@
             }
         }
         .showVideo{
+            background: #fff;
             position: relative;
             width: 100%;
-            height: 3.07rem;
+            // height: 3.07rem;
             img{
                 width:100%;
                 height: 100%;
@@ -147,12 +150,101 @@
                 position: absolute;
                 top: 0;
                 left: 0;
-                video{
-                    width: .83rem;
-                    height: .83rem;
-                    border-radius: 50%;
+                .authorImg{
+                    width: .85rem;
+                    height: .85rem;
+                    margin:.41rem 0 .25rem .23rem;
+                    img{
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+                h1{
+                    margin-left: .23rem;
+                    font-size: .18rem;
+                    color: #fff;
+                }
+                p{
+                    margin-left: .23rem;
+                    color:#fff;
+                }
+                .messge{
+                    ::after{
+                        display: block;
+                        width:.85rem;
+                        height:.04rem;
+                        background: #a4a4a4;
+                        margin: .2rem 0;
+                    }
+                    margin:0 .23rem;
+                    color:#fff;
+                    max-height: 1.65rem;
+                    font-size: .13rem;
+                    line-height: .22rem;
+                    word-break: break-all;
+                    margin-bottom: 0.3rem;
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 3;
+                    overflow: hidden;
+                }
+                a{
+                    margin-left: .23rem;;
+                    font-size: .13rem;
+                    padding:0.1rem .2rem ;
+                    margin-top: .3rem;
+                    @include border(.02rem,#fff,solid,.22rem);
+                    color: #fff;
                 }
             }
         }
+        .zhanshi{
+            background: #fff;
+            padding-top:.2rem;
+            width: 100%;
+            margin-bottom:.12rem;
+            p{
+                text-align: center;
+                line-height: .6rem;
+                font-size: .18rem;
+            }
+            .zsImg{
+                width: 100%;
+                img{
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            .zsStyle{
+                padding: .1rem 0;
+                margin-left:.375rem;
+                dt{
+                    font-size: .155rem;
+                    margin-bottom: .125rem;
+                }
+                dd{
+                    width: 100%;
+                    div{
+                        display: inline-block;
+                        width: .38rem;
+                        height: .38rem;
+                        @include border(.02rem,#d2d2d2,solid);
+                        padding: .045rem;
+                        margin-right: .23rem;
+                        margin-bottom:.1rem;
+                        img{
+                            width: 100%;
+                            height:100%;
+                        }
+                        &.active{
+                            @include border(.03rem,#000,solid);
+                            background: url(/static/images/biz_order_buyconfirm_select_triangle.png) no-repeat right bottom;
+                            background-size: .08rem;
+                        }
+                    }
+                }
+            }
+        }
+
     }
 }
