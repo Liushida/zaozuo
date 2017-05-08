@@ -1,0 +1,51 @@
+.detailparameter{
+    overflow-y: scroll;
+    height: 100%;
+    .parameter{
+        background: #fff;
+        padding-top:.2rem;
+        width: 100%;
+        margin-bottom:.12rem;
+        p{
+            text-align: center;
+            line-height: .6rem;
+            font-size: .18rem;
+        }
+        .zsImg{
+            width: 100%;
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .zsStyle{
+            padding: .1rem 0;
+            margin-left:.375rem;
+            dt{
+                font-size: .155rem;
+                margin-bottom: .125rem;
+            }
+            dd{
+                width: 100%;
+                div{
+                    display: inline-block;
+                    width: .38rem;
+                    height: .38rem;
+                    @include border(.02rem,#d2d2d2,solid);
+                    padding: .045rem;
+                    margin-right: .23rem;
+                    margin-bottom:.1rem;
+                    img{
+                        width: 100%;
+                        height:100%;
+                    }
+                    &.active{
+                        @include border(.03rem,#000,solid);
+                        background: url(/static/images/biz_order_buyconfirm_select_triangle.png) no-repeat right bottom;
+                        background-size: .08rem;
+                    }
+                }
+            }
+        }
+    }
+}

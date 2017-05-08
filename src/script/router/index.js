@@ -17,7 +17,8 @@ import Buycart from '../components/buycart/Buycart.vue'
 
 //测试,删除
 import Test from '../components/detail/test/Test.vue'
-
+import DetailParameter from "../components/detail/DetailParameter.vue"
+import DetailCanshu from "../components/detail/DetailCanshu.vue"
 
 Vue.use(Router)
 
@@ -69,6 +70,19 @@ export default new Router({
     //           component:DetailIndex
     //       }
     //   ]
+    },
+    {
+        //测试
+        path:"/test",
+        component:Test
+    },
+    {
+        path:"/parameter",
+        component:DetailParameter
+    },
+    {
+        path:"/canshu",
+        component:DetailCanshu
     },
     {
       path:'/lr',

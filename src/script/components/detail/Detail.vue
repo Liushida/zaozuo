@@ -37,8 +37,8 @@
           <div class="chooseStyle">
               <dl class="styleColor">
                   <dt>颜色</dt>
-                  <dd class="">
-                      <div v-for="(item,index) in color">
+                  <dd class="color">
+                      <div class="" v-for="(item,index) in color" :title="item.value" :data-option="item.opNameId+':'+item.opValueId" @click="chooseColor()">
                           <img :src="`http://img.zaozuo.com/${item.img}`" alt="">
                       </div>
                   </dd>
@@ -46,18 +46,18 @@
               <dl class="styleStyle">
                   <dt>款型</dt>
                   <dd class="">
-                      <div v-for="(style,index) in style" v-html="style.value">  </div>
+                      <div v-for="(style,index) in style" v-html="style.value" :title="style.value" :data-option="style.opNameId+':'+style.opValueId">  </div>
                   </dd>
               </dl>
               <dl class="styleOther">
                   <dt>沙发腿</dt>
                   <dd class="">
-                      <div v-for="(item,index) in other" v-html="item.value"></div>
+                      <div v-for="(item,index) in other" v-html="item.value" :title="item.value" :data-option="item.opNameId+':'+item.opValueId"></div>
                   </dd>
               </dl>
           </div>
           <div class="showVideo">
-              <img :src="`http://img.zaozuo.com/${com.designerExtraInfo.designer_bgimgwap}`" alt="">
+              <img :src="`http://img.zaozuo.com/${img.designer_bgimgwap}`" alt="">
               <div class="showposi">
                   <div class="authorImg">
                       <img  :src="`http://img.zaozuo.com/${des.avatar}`" alt="">
@@ -68,19 +68,25 @@
                   <a href="">了解更多></a>
               </div>
           </div>
-          <div class="">
+          <Parameter />
+          <div class="ImgShow">
 
           </div>
+          <Canshu />
       </div>
   </div>
 </template>
 <script>
 
 import Header from "../common/Header.vue";
+import Parameter from "./DetailParameter.vue";
+import Canshu from "./DetailCanshu.vue";
 Vue.component("Header", Header);
+Vue.component("Parameter", Parameter);
+Vue.component("Canshu", Canshu);
 import Vue from "vue"
 import axios from "../../utils/axios.js"
-// import { Indicator } from 'mint-ui';
+import { Indicator } from 'mint-ui';
 export default {
     name: "",
     data: function data() {
@@ -91,17 +97,25 @@ export default {
         other:[],
         des:{},
         com:{},
-        show:[]
+        show:[],
+        img:[]
       }
     },
     methods: {
-        // Indicator:Indicator.open({
-        //     text: '加载中...',
-        //     spinnerType: 'fading-circle'
-        // })
+        chooseColor:function(){
+            var color = document.getElementsByClassName('color');
+            var div = color.children;
+            // color.children.className +=" active"
+            console.log(div);
+        }
+
     },
     mounted: function(){
       let that = this;
+      Indicator:Indicator.open({
+          text: '加载中...',
+          spinnerType: 'fading-circle'
+      });
       axios.get({
         type: 'get',
         url: `proxy/app/item/300100/exp?boxId=1041`,
@@ -113,6 +127,10 @@ export default {
           let des= res.data.data.designerInf;
           let com= res.data.data;
           let show =com.sizeCharts;
+
+          let img =com.designerExtraInfo;
+          that.img = img;
+
           that.list=that.list.concat(data);
           that.color=that.color.concat(color);
           that.style=that.style.concat(style);
@@ -120,7 +138,7 @@ export default {
           that.show=that.show.concat(show);
           that.com = com;
           that.des = des;
-          console.log(show);
+        //   console.log(show);
         }
       })
     }

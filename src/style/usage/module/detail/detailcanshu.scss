@@ -1,0 +1,21 @@
+.canshu{
+    width: 100%;
+    padding:.2rem .2rem;
+    background: #fff;
+    h3{
+        font-size: .175rem;
+        text-align: center;
+        line-height: .5rem;
+    }
+    li{
+        @include border(0 0 1px 0,#ddd,dashed);
+        b{
+            font-size: .11rem;
+        }
+        p{
+            font-size: .11rem;
+            color: #999;
+            line-height: .15rem;
+        }
+    }
+}
