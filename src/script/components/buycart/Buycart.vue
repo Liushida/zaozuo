@@ -1,7 +1,7 @@
 <template>	
 	<div class="m-buycart-box">
 		<div class="m-buycart-header">
-			<div class="m-buycart-back"><img src="/static/images/nav_back.png"></div>
+			<div class="m-buycart-back"   @click="back"><img src="/static/images/biz_res_back_black.png"></div>
 			<div class="m-buycart-title"><span>购物车</span>(<i>1</i>)</div>
 		</div>
 		<div class="m-buycart-list-box">
@@ -74,7 +74,11 @@
 <script type="text/javascript">
 	
 export default {
-
+	methods:{
+    back: function(){
+      this.$router.go(-1);
+    }
+  }
 }
 
 
