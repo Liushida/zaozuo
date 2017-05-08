@@ -92,6 +92,7 @@ export default {
       }
     },
     search: function(typeName,tagId,tagName){
+      this.canSearch = true;
       let obj = {};
       obj[typeName] = tagId;
       this.tagIds = this.objToOne(this.tagIds,obj);
@@ -158,6 +159,7 @@ export default {
         let c = this.getTags();
         console.log(c)
         this.show = false;
+        this.itemList = [];
         let that = this;
         axios.get({
           url: `/proxy/app/search`,
