@@ -1,7 +1,7 @@
 <template>
   <div class="list-main">
     <div class="item" v-for="(item, index) in list" :key="index">
-      <div class="item-main">
+      <router-link class="item-main" :to="`/detail/${item.goTo.refId}`" tag="div">
         <div class="img">
           <img :src="`http://img.zaozuo.com/${item.headImg}`" alt="">
         </div>
@@ -13,17 +13,17 @@
           <div class="content" v-text="item.slogan"></div>
           <div class="freePost">免费配送</div>
         </div>
-      </div>
+      </router-link>
       <div class="item-child"  v-if="hide">
         <div class="detail" v-if="item.children.length <= 3 && item.hasDetail">
-          <div class="detial-item" v-for="(value, index) in item.children" :key="index">
+          <router-link :to="`/detail/${item.goTo.refId}`" tag="div" class="detial-item" v-for="(value, index) in item.children" :key="index">
             <img :src="`http://img.zaozuo.com/${value.headImg}`" alt="">
-          </div>
+          </router-link>
         </div>
         <div class="detail" v-if="item.children.length > 3 && item.hasDetail">
-          <div class="detial-item" v-for="(value, index) in item.children.slice(0, 5)" :key="index">
+          <router-link :to="`/detail/${item.goTo.refId}`" tag="div" class="detial-item" v-for="(value, index) in item.children.slice(0, 5)" :key="index">
             <img :src="`http://img.zaozuo.com/${value.headImg}`" alt="">
-          </div>
+          </router-link>
           <div class="detial-item showall" @click="showAll">
             <div>
               <span>查看更多</span>
@@ -34,14 +34,14 @@
       </div>
       <div class="item-child"  v-else>
         <div class="detail" v-if="item.children.length <= 3 && item.hasDetail">
-          <div class="detial-item" v-for="(value, index) in item.children" :key="index">
+          <router-link :to="`/detail/${item.goTo.refId}`" tag="div" class="detial-item" v-for="(value, index) in item.children" :key="index">
             <img :src="`http://img.zaozuo.com/${value.headImg}`" alt="">
-          </div>
+          </router-link>
         </div>
         <div class="detail" v-if="item.children.length > 3 && item.hasDetail">
-          <div class="detial-item" v-for="(value, index) in item.children" :key="index">
+          <router-link :to="`/detail/${item.goTo.refId}`" tag="div" class="detial-item" v-for="(value, index) in item.children" :key="index">
             <img :src="`http://img.zaozuo.com/${value.headImg}`" alt="">
-          </div>
+          </router-link>
         </div>
       </div>
     </div>

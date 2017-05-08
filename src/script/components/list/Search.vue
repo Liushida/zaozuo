@@ -26,7 +26,7 @@
       </div>
     </div>
     <div class="itemList">
-      <div class="item" v-for="(item, index) in itemList" :key="index">
+      <router-link :to="`/detail/${item.goTo.refId}`" tag="div"  class="item" v-for="(item, index) in itemList" :key="index">
         <div class="img">
           <img :src="`http://img.zaozuo.com/${item.headImg}`" alt="">
         </div>
@@ -36,7 +36,7 @@
           <span class="empty"></span>
           <span class="freePost">免费配送</span>
         </div>
-      </div>
+      </router-link>
     </div>
   </div>
 </template>
