@@ -53,7 +53,7 @@ export default new Router({
       component: Mine
     },
     {
-      path: '/detail',
+      path: '/detail/:id',
       component: Detail
     },
     {
