@@ -1,6 +1,7 @@
 <template>
   <div class="list-main">
-    <div class="item" v-for="(item, index) in list" :key="index">
+    <mt-loadmore :top-method="loadTop" :bottom-method="loadBottom" :autoFill="false" :bottom-all-loaded="allLoaded" ref="loadmore">
+      <div class="item" v-for="(item, index) in list" :key="index">
       <router-link class="item-main" :to="`/detail/${item.goTo.refId}`" tag="div">
         <div class="img">
           <img :src="`http://img.zaozuo.com/${item.headImg}`" alt="">
@@ -45,21 +46,60 @@
         </div>
       </div>
     </div>
+    </mt-loadmore>
   </div>
 </template>
 <script>
+import Vue from 'vue';
 import axios from '../../utils/axios.js';
+import { Loadmore } from 'mint-ui';
+import { Toast } from 'mint-ui'
+Vue.component(Loadmore.name, Loadmore);
 export default {
   name: "",
   data: function data() {
     return {
       list: [],
-      hide: true
+      hide: true,
+      allLoaded: false,
+      page: 1
     }
   },
   methods: {
     showAll: function() {
       return this.hide = false;
+    },
+    loadTop: function() {
+      Toast({
+        message: '已经是最新啦',
+        duration: 1000
+      });
+      this.$refs.loadmore.onTopLoaded();
+    },
+    loadBottom: function(){
+      let type = this.$route.params.type || '13';
+      let that = this;
+      this.page++;
+      axios.get({
+        url: `api/paper/${type}`,
+        data:{
+          page: that.page
+        },
+        callback: function(res){
+          let data = res.data.data.boxCovers;
+          if(data.length >= 8){
+            that.list = that.list.concat(data);
+            that.$refs.loadmore.onBottomLoaded();
+          }else{
+            Toast({
+              message: '没有更多啦',
+              duration: 1000
+            });
+            this.allLoaded = true;
+            this.$refs.loadmore.onBottomLoaded();
+          }
+        }
+      })
     }
   },
   mounted: function(){
@@ -67,6 +107,9 @@ export default {
     let that = this;
     axios.get({
       url: `api/paper/${type}`,
+      data:{
+        page: that.page
+      },
       callback: function(res){
         let data = res.data.data.boxCovers;
         that.list = that.list.concat(data.slice(0,1).concat(data.slice(2)));

@@ -7,3 +7,15 @@
   @include flexbox();
   @include flex-direction(column);
 }
+//Toast样式
+.mint-toast {
+  height: .8rem;
+  width: 1.6rem;
+  @include flexbox();
+  @include justify-content();
+  @include align-items();
+  span {
+    font-size: .2rem;
+    color: #fff;
+  }
+}
