@@ -104,5 +104,32 @@
         }
       }
     }
+    .noSearch {
+      height: 100%;
+      width: 100%;
+      @include flexbox();
+      @include flex-direction(column);
+      @include justify-content();
+      @include align-items();
+      .x{
+        height: 1rem;
+        width: 1rem;
+        @include border(5px, #ccc, solid, 50%);
+        @include flexbox();
+        @include justify-content();
+        @include align-items();
+        img{
+          width: 80%;
+          height: 80%;
+        }
+      }
+      span{
+        margin-top: .7rem;
+        text-align: center;
+        line-height: .3rem;
+        font-size: .16rem;
+        color: #ccc;
+      }
+    }
   }
 }

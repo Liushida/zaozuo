@@ -26,7 +26,7 @@
       </div>
     </div>
     <div class="itemList">
-      <mt-loadmore :top-method="loadTop" :bottom-method="loadBottom" :autoFill="false" :bottom-all-loaded="allLoaded" ref="loadmore">
+      <mt-loadmore v-if="canSearch" :top-method="loadTop" :bottom-method="loadBottom" :autoFill="false" :bottom-all-loaded="allLoaded" ref="loadmore">
         <div class="box">
           <router-link :to="`/detail/${item.goTo.refId}`" tag="div"  class="item" v-for="(item, index) in itemList" :key="index">
             <div class="img">
@@ -41,6 +41,18 @@
           </router-link>
         </div>
       </mt-loadmore>
+      <div v-else class="noSearch">
+        <div class="x">
+          <img src="/static/images/biz_account_btn_del.png" alt="">
+        </div>
+        <span>
+          从前书信很慢，车马很远，</br>
+          一生只够爱一人。</br>
+          ————木心</br>
+          此种类别，暂时还没有</br>
+          再给点时间，努力开发更多产品中</br>
+        </span>
+      </div>
     </div>
   </div>
 </template>
@@ -63,7 +75,8 @@ export default {
       show: false,
       tagIds: {},
       allLoaded: false,
-      page: 1
+      page: 1,
+      canSearch: true
     }
   },
   methods:{
@@ -153,6 +166,10 @@ export default {
             tags: c
           },
           callback: function(res){
+            if(res.data.data.items.length == 0){
+              that.canSearch = false;
+              return;
+            }
             that.itemList = res.data.data.items;
             that.page = 1;
           }
