@@ -1,6 +1,7 @@
 @charset "UTF-8";
 @import  './usage/core/reset.scss';
 @import './usage/module/common/index.scss';
+@import '../../node_modules/mint-ui/lib/style.css';
 @import './usage/module/list/index.scss';
 @import './usage/module/list/home.scss';
 @import  './usage/module/mine/mine.scss';
@@ -9,3 +10,4 @@
 @import  './usage/module/mine/register.scss';
 @import  './usage/module/mine/login.scss';
 @import  './usage/module/buycart/buycart.scss';
+@import  './usage/module/buycart/popup.scss';

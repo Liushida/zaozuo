@@ -21,7 +21,7 @@
 						</ul>
 					</div>
 					<div class="goods-nav">
-						<span><i></i>编辑</span>
+						<span @click="isShow"><i></i>编辑</span>
 						<span><i></i>删除</span>
 						<span><i></i>选中</span>
 					</div>
@@ -68,16 +68,70 @@
 				</li>
 			</ul>
 		</div>
-	</div>
+		<mt-popup
+	    v-model="popupVisible"
+	    position="bottom">
+	    <div class="m-popup-box">
+	      <div class="m-popup-title">
+	          <div class="m-popup-img">
+	            <img src="/static/images/biz_res_nav_me_pressed.png"/>
+	          </div>
+	          <div class="m-popup-price">
+	            <h4>豌豆椅</h4>
+	            <h5>￥885</h5>
+	            <h6>48.6X48.2X77.1cm</h6>
+	          </div>
+	          <p>免费配送</p>
+	      </div>
+	      <div class="m-popup-details">
+	        <ul class="m-popup-count">
+	          <li><img src="/static/images/biz_order_buyconfirm_amount_minus.png"></li>
+	          <li>2</li>
+	          <li><img src="/static/images/biz_order_buyconfirm_amount_plus.png"></li>
+	        </ul>
+	        <ul class="m-popup-color">
+	          <p>颜色</p>
+	          <li><img src="http://img.zaozuo.com/848999408bc941cf808abcf6d6cf81e2@!small" /></li>
+	          <li><img src="http://img.zaozuo.com/848999408bc941cf808abcf6d6cf81e2@!small" /></li>
+	          <li><img src="http://img.zaozuo.com/848999408bc941cf808abcf6d6cf81e2@!small" /></li>
+	        </ul>
+	        <ul class="m-popup-style">
+	          <p>款型</p>
+	          <li>转角</li>
+	          <li>角墩</li>
+	          <li>单人座</li>
+	          <li>双人座</li>
+	          <li>转角双人座</li>
+	          <li>三人座</li>
+	          <li>转角三人座</li>
+	        </ul>
+	      </div>   
+	      <div class="m-popup-btn">
+	        确认修改
+	      </div>
+	    </div>
+	  </mt-popup>
+	</div>	
 </template>
 
 <script type="text/javascript">
-	
+import Vue from 'vue';
+import { Popup } from 'mint-ui';
+Vue.component(Popup.name, Popup);
 export default {
-	methods:{
+  name:'',
+  methods:{
     back: function(){
       this.$router.go(-1);
-    }
+    },
+    isShow: function(){
+    	this.popupVisible = true;
+    } 
+  },
+  data: function(){
+  	return{
+  		popupVisible: false
+  	}
   }
 }
 
