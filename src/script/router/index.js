@@ -12,6 +12,8 @@ import Login from '../components/mine/Login.vue'
 import Register from '../components/mine/Register.vue'
 import Scene from '../components/list/Scene.vue'
 import We from '../components/list/We.vue'
+import Buycart from '../components/buycart/Buycart.vue'
+
 
 //测试,删除
 import Test from '../components/detail/test/Test.vue'
@@ -79,11 +81,10 @@ export default new Router({
     {
       path:'/register',
       component:Register
-  },
-    {
-        //测试
-      path:'/test',
-      component: Test
     },
+    {
+      path:'/buycart',
+      component:Buycart
+    }
   ]
 })
