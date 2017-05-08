@@ -88,17 +88,15 @@ export default {
   watch:{
     tagIds: {
       handler: function () {
-        let a = this.tagIds['品类'];
-        let b = this.tagIds['场景'];
-        let c = '';
-        if(a == undefined){
-          c = b;
-        }else if(b == undefined){
-          c = a;
-        }else{
-          c = a + ',' + b;
+        let c = ""
+        for(let i in this.tagIds){
+          if(this.tagIds[i] != undefined){
+            c += this.tagIds[i] + ','
+          }else {
+            c += '';
+          }
         }
-        console.log(c)
+        console.log(c.substr(0, c.length - 1))
         this.show = false;
         let that = this;
         axios.all({
@@ -106,11 +104,12 @@ export default {
           url: `/proxy/app/search`,
           data: {
             page: 1,
-            tags: c
+            tags: '20,52'
           },
           callback: function(res){
-            console.log(res)
-            // that.itemList = that.itemList.push(res.data.data.items);
+            // console.log(res.data.data.items);
+            that.itemList = that.itemList.concat(res.data.data.items);
+            // console.log(that.itemList);
           }
         })
       },
