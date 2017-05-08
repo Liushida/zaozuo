@@ -1,6 +1,6 @@
 <template>
   <div id="m-user">
-  	<mHeader/>
+  	<mHeader :canBack="true"/>
   	<User />		
   </div>
 </template>

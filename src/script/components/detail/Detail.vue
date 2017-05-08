@@ -2,20 +2,32 @@
   <div id="details">
       <Header :canBack="true"/>
       <ul class="nav">
-          <li class="active">作品</li>
-          <li>参数</li>
-          <li>推荐<span>/12</span></li>
-          <li>晒单<span>/53</span></li>
-          <li>套餐</li>
+          <li class="active">
+              <router-link to="detail_index" active-class="active">作品</router-link>
+          </li>
+          <li>
+              <router-link to="/home" active-class="active">参数</router-link>
+          </li>
+          <li>
+              <router-link to="/home" active-class="active">推荐</router-link><span>/12</span>
+          </li>
+          <li>
+              <router-link to="/home" active-class="active">晒单</router-link><span>/53</span>
+          </li>
+          <li>
+              <router-link to="/home" active-class="active">套餐</router-link>
+          </li>
       </ul>
       <div class="scroll">
           <div class="showdetail">
               <div class="showImg">
-                  <img src="http://img.zaozuo.com/5282be36b81ccf3734c01abe12a33b02?x-oss-process=image/format,jpg/interlace,1" alt="">
+                  <img :src="`http://img.zaozuo.com/${this.com.defaultBigImg}`" alt="">
               </div>
               <div class="showTitle">
                   <h1>造作大先生沙发</h1>
-                  <p>Mr.Big Sofa</p>
+                  <p>
+                      Mr.Big Sofa
+                  </p>
                   <div class="sAs">
                       <span>收藏</span>
                       <span>分享</span>
@@ -26,71 +38,92 @@
               <dl class="styleColor">
                   <dt>颜色</dt>
                   <dd class="">
-                      <div class="active">
-                          <img src="http://img.zaozuo.com/848999408bc941cf808abcf6d6cf81e2@!small" alt="">
-                      </div>
-                      <div class="">
-                          <img src="http://img.zaozuo.com/848999408bc941cf808abcf6d6cf81e2@!small" alt="">
-                      </div>
-                      <div class="">
-                          <img src="http://img.zaozuo.com/848999408bc941cf808abcf6d6cf81e2@!small" alt="">
+                      <div v-for="(item,index) in color">
+                          <img :src="`http://img.zaozuo.com/${item.img}`" alt="">
                       </div>
                   </dd>
               </dl>
               <dl class="styleStyle">
                   <dt>款型</dt>
                   <dd class="">
-                      <div class="active">
-                          单人座左扶手
-                      </div>
-                      <div class="">
-                          双人座右扶手
-                      </div>
-                      <div class="">
-                          脚墩
-                      </div>
-                      <div class="">
-                          单人座右扶手
-                      </div>
-                      <div class="">
-                          双人座左扶手
-                      </div>
+                      <div v-for="(style,index) in style" v-html="style.value">  </div>
                   </dd>
               </dl>
               <dl class="styleOther">
                   <dt>沙发腿</dt>
                   <dd class="">
-                      <div class="active">
-                          有腿没腿
-                      </div>
-                      <div class="">
-                          有腿没腿
-                      </div>
-                      <div class="">
-                          有腿没腿
-                      </div>
+                      <div v-for="(item,index) in other" v-html="item.value"></div>
                   </dd>
               </dl>
           </div>
           <div class="showVideo">
-              <img src="http://img.zaozuo.com/e5d8be95a360efffc60757f82e363c22" alt="">
+              <img :src="`http://img.zaozuo.com/${com.designerExtraInfo.designer_bgimgwap}`" alt="">
               <div class="showposi">
-                  <video src="http://zz-imgs.oss-cn-hangzhou.aliyuncs.com/chaoji-gif-wagell.mp4" preload  poster="posterimage.jpg">
-
-                  </video>
+                  <div class="authorImg">
+                      <img  :src="`http://img.zaozuo.com/${des.avatar}`" alt="">
+                  </div>
+                  <h1 v-html="des.dname"></h1>
+                  <p v-html="des.nationality"></p>
+                  <div class="messge" v-html="des.descriptionText"></div>
+                  <a href="">了解更多></a>
               </div>
-              <h1>Jonas Wagell</h1>
-              <p>Sweden | Stockholm</p>
+          </div>
+          <div class="">
+
           </div>
       </div>
   </div>
 </template>
 <script>
-import Vue from "vue";
+
 import Header from "../common/Header.vue";
 Vue.component("Header", Header);
+import Vue from "vue"
+import axios from "../../utils/axios.js"
+// import { Indicator } from 'mint-ui';
 export default {
-
+    name: "",
+    data: function data() {
+      return {
+        list: [],
+        color:[],
+        style:[],
+        other:[],
+        des:{},
+        com:{},
+        show:[]
+      }
+    },
+    methods: {
+        // Indicator:Indicator.open({
+        //     text: '加载中...',
+        //     spinnerType: 'fading-circle'
+        // })
+    },
+    mounted: function(){
+      let that = this;
+      axios.get({
+        type: 'get',
+        url: `proxy/app/item/300100/exp?boxId=1041`,
+        callback: function(res){
+          let data = res.data.data.detail.item;
+          let color = res.data.data.name2values[10331];
+          let style= res.data.data.name2values[10332];
+          let other= res.data.data.name2values[10333];
+          let des= res.data.data.designerInf;
+          let com= res.data.data;
+          let show =com.sizeCharts;
+          that.list=that.list.concat(data);
+          that.color=that.color.concat(color);
+          that.style=that.style.concat(style);
+          that.other=that.other.concat(other);
+          that.show=that.show.concat(show);
+          that.com = com;
+          that.des = des;
+          console.log(show);
+        }
+      })
+    }
 }
 </script>
 <style>

@@ -28,10 +28,13 @@
 		.m-lg-user,.m-lg-pas{
 			margin:.17rem auto;
 			text-align: center;
+			width:85%;
+			@include border(1px,#fff,solid);
 			input{
-				width:85%;
+				width:100%;
+				border:none;
+				color:#fff;
 				height: .5rem;
-				@include border(1px,#fff,solid);
 				background: transparent;
 				padding:.1rem;
 			}

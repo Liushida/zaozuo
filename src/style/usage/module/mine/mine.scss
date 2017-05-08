@@ -60,6 +60,7 @@
 					height: .63rem;
 					padding: 0 .2rem;
 					position: relative;
+					background: #fff;
 					img{
 						width:.25rem;
 						height: .25rem;
@@ -84,6 +85,9 @@
 							height: 100%;
 						}
 					}
+		  		}
+		  		>li:nth-child(1),>li:nth-child(4),>li:nth-child(5){
+		  			margin-bottom: .17rem;
 		  		}
 		 	}
 		} 
