@@ -13,7 +13,8 @@ import Register from '../components/mine/Register.vue'
 import Scene from '../components/list/Scene.vue'
 import We from '../components/list/We.vue'
 
-import Test from '../components/detail/Test.vue'
+//测试,删除
+import Test from '../components/detail/test/Test.vue'
 
 
 Vue.use(Router)

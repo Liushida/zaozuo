@@ -68,19 +68,6 @@
                   <a href="">了解更多></a>
               </div>
           </div>
-          <div class="zhanshi">
-              <p>转角</p>
-              <div class="zsImg">
-                  <img src="http://img.zaozuo.com/b9b4967d0aa1d774914f7fbef941f28a?x-oss-process=image/format,jpg/interlace,1" alt="">
-              </div>
-              <dl class="zsStyle">
-                  <dd class="">
-                      <div v-for="(item,index) in show">
-                          <img :src="`http://img.zaozuo.com/${item.smallImg.md5}`" alt="">
-                      </div>
-                  </dd>
-              </dl>
-          </div>
           <div class="">
 
           </div>
@@ -90,6 +77,7 @@
 <script>
 import Vue from "vue"
 import axios from "../../utils/axios.js"
+// import { Indicator } from 'mint-ui';
 export default {
     name: "",
     data: function data() {
@@ -104,7 +92,10 @@ export default {
       }
     },
     methods: {
-
+        // Indicator:Indicator.open({
+        //     text: '加载中...',
+        //     spinnerType: 'fading-circle'
+        // })
     },
     mounted: function(){
       let that = this;
