@@ -54,7 +54,7 @@ export default {
       classLeft: false,
       classRight: false,
       show: false,
-      tagIds: {}
+      tagIds: {},
     }
   },
   methods:{
@@ -99,17 +99,14 @@ export default {
         console.log(c.substr(0, c.length - 1))
         this.show = false;
         let that = this;
-        axios.all({
-          type: 'get',
+        axios.get({
           url: `/proxy/app/search`,
           data: {
             page: 1,
-            tags: '20,52'
+            tags: c.substr(0, c.length - 1)
           },
           callback: function(res){
-            // console.log(res.data.data.items);
-            that.itemList = that.itemList.concat(res.data.data.items);
-            // console.log(that.itemList);
+            that.itemList = res.data.data.items;
           }
         })
       },
@@ -118,14 +115,12 @@ export default {
   },
   mounted: function(){
     let that = this;
-    axios.all({
-      type: 'get',
+    axios.get({
       url: `/proxy/app/itemTags`,
       callback: function(res){
         that.tagList = that.tagList.concat(res.data.data.itemTags);
         console.log(this.tagList)
-        axios.all({
-          type: 'get',
+        axios.get({
           url: `/proxy/app/search`,
           data: {
             page: 1

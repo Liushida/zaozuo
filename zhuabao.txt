@@ -33,6 +33,7 @@ http://api.zaozuo.com/app/search?page=1
 分类搜索
 http://api.zaozuo.com/app/search?page=1&tags=16
 http://api.zaozuo.com/app/search?page=1&tags=49,16
+http://api.zaozuo.com/app/search?page=1&tags=16,51
 
 加入购物车
 http://api.zaozuo.com/item/talk?type=6&itemId=300052

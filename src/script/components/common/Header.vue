@@ -1,8 +1,8 @@
 <template>
   <header class="m-header">
     <div class="cart">
-      <router-link to="">
-        <img v-if="false" src="/static/images/biz_res_nav_cart_pressed.png" alt="">
+      <router-link to="/buycart">
+        <img v-if="this.$route.fullPath.substr(1) == 'buycart'" src="/static/images/biz_res_nav_cart_pressed.png" alt="">
         <img v-else src="/static/images/biz_res_nav_cart_normal.png" alt="">
       </router-link>
     </div>

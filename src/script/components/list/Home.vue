@@ -65,8 +65,7 @@ export default {
   mounted: function(){
     let type = this.$route.params.type || '13';
     let that = this;
-    axios.all({
-      type: 'get',
+    axios.get({
       url: `api/paper/${type}`,
       callback: function(res){
         let data = res.data.data.boxCovers;
