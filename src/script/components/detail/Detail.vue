@@ -138,6 +138,7 @@ export default {
           that.show=that.show.concat(show);
           that.com = com;
           that.des = des;
+          Indicator.close();
         //   console.log(show);
         }
       })
