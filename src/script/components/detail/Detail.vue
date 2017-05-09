@@ -35,7 +35,7 @@
               </div>
           </div>
           <div class="chooseStyle">
-              <dl class="styleColor">
+              <dl class="styleColor" v-if="color">
                   <dt>颜色</dt>
                   <dd class="color">
                       <div class="" v-for="(item,index) in color" :title="item.value" :data-option="item.opNameId+':'+item.opValueId" @click="chooseColor()">
@@ -43,13 +43,13 @@
                       </div>
                   </dd>
               </dl>
-              <dl class="styleStyle">
+              <dl class="styleStyle" v-if="style">
                   <dt>款型</dt>
                   <dd class="">
                       <div v-for="(style,index) in style" v-html="style.value" :title="style.value" :data-option="style.opNameId+':'+style.opValueId">  </div>
                   </dd>
               </dl>
-              <dl class="styleOther">
+              <dl class="styleOther" v-if="other">
                   <dt>沙发腿</dt>
                   <dd class="">
                       <div v-for="(item,index) in other" v-html="item.value" :title="item.value" :data-option="item.opNameId+':'+item.opValueId"></div>
@@ -98,7 +98,8 @@ export default {
         des:{},
         com:{},
         show:[],
-        img:[]
+        img:[],
+        arr:[]
       }
     },
     methods: {
@@ -106,24 +107,42 @@ export default {
             var color = document.getElementsByClassName('color');
             var div = color.children;
             // color.children.className +=" active"
-            console.log(div);
+            // console.log(div);
         }
 
     },
     mounted: function(){
+       let id = this.$route.params.id
       let that = this;
-      Indicator:Indicator.open({
-          text: '加载中...',
-          spinnerType: 'fading-circle'
-      });
+    //   Indicator.open({
+    //       text: '加载中...',
+    //       spinnerType: 'fading-circle'
+    //   });
       axios.get({
         type: 'get',
-        url: `proxy/app/item/300100/exp?boxId=1041`,
+        url: `proxy/app/item/${id}/exp?boxId=1041`,
+        // url: `proxy/app/item/300100/exp?boxId=1041`,
         callback: function(res){
           let data = res.data.data.detail.item;
-          let color = res.data.data.name2values[10331];
-          let style= res.data.data.name2values[10332];
-          let other= res.data.data.name2values[10333];
+
+          //获取颜色,款式,其他要求
+          let boom = res.data.data.name2values;
+          let arr = []
+          let i = 0;
+          for(let key in boom){
+            arr[i] = boom[key]
+            i++;
+          }
+          let color = arr[0];
+          let style= arr[1];
+          let other= arr[2];
+          color == true ? color.concat(color) : false;
+          style == true ? style.concat(style) : false;
+          other == true ? other.concat(other) : false;
+          that.color = color;
+          that.style = style;
+          that.other = other;
+          //获取颜色款式其他  结束
           let des= res.data.data.designerInf;
           let com= res.data.data;
           let show =com.sizeCharts;
@@ -132,13 +151,11 @@ export default {
           that.img = img;
 
           that.list=that.list.concat(data);
-          that.color=that.color.concat(color);
-          that.style=that.style.concat(style);
-          that.other=that.other.concat(other);
           that.show=that.show.concat(show);
           that.com = com;
           that.des = des;
-        //   console.log(show);
+        //   console.log(color);
+        // Indicator.colse();
         }
       })
     }
