@@ -7,7 +7,7 @@
       </router-link>
     </div>
     <div class="me">
-      <router-link to="/mine">
+      <router-link to="/lr">
         <img v-if="this.$route.fullPath.substr(1) == 'mine'" src="/static/images/biz_res_nav_me_pressed.png" alt="">
         <img v-else src="/static/images/biz_res_nav_me_normal.png" alt="">
       </router-link>
