@@ -18,6 +18,22 @@
               <router-link to="/home" active-class="active">套餐</router-link>
           </li>
       </ul>
+      <!-- <mt-navbar v-model="selected">
+          <mt-tab-item id="1">选项一</mt-tab-item>
+          <mt-tab-item id="2">选项二</mt-tab-item>
+          <mt-tab-item id="3">选项三</mt-tab-item>
+      </mt-navbar>
+      <mt-tab-container v-model="selected">
+          <mt-tab-container-item id="1">
+            <mt-cell v-for="n in 10" :title="'内容 ' + n" />
+          </mt-tab-container-item>
+          <mt-tab-container-item id="2">
+            <mt-cell v-for="n in 4" :title="'测试 ' + n" />
+          </mt-tab-container-item>
+          <mt-tab-container-item id="3">
+            <mt-cell v-for="n in 6" :title="'选项 ' + n" />
+          </mt-tab-container-item>
+    </mt-tab-container> -->
       <div class="scroll">
           <div class="showdetail">
               <div class="showImg">
@@ -39,8 +55,8 @@
                       <div
                        v-for="(item,index) in color"
                        :title="item.value" :data-option="item.opNameId+':'+item.opValueId"
-                       :class="'col-'+item.orderLong"
-                       @click="chooseColor()">
+                       :class=" 'col-'+item.orderLong"
+                       @click.bind(this)="chooseColor(item.opNameId+':'+item.opValueId)">
                           <img :src="`http://img.zaozuo.com/${item.img}`" alt="">
                       </div>
                   </dd>
@@ -48,13 +64,14 @@
               <dl class="styleStyle" v-if="style">
                   <dt>款型</dt>
                   <dd class="">
-                      <div v-for="(style,index) in style" v-html="style.value" :title="style.value" :data-option="style.opNameId+':'+style.opValueId">  </div>
+                      <div v-for="(style,index) in style" v-html="style.value" :title="style.value" :data-option="style.opNameId+':'+style.opValueId"
+                       @click.bind(this)="chooseStyle(style.opNameId+':'+style.opValueId)">  </div>
                   </dd>
               </dl>
               <dl class="styleOther" v-if="other">
                   <dt>其他</dt>
                   <dd class="">
-                      <div v-for="(item,index) in other" v-html="item.value" :title="item.value" :data-option="item.opNameId+':'+item.opValueId"></div>
+                      <div v-for="(item,index) in other" v-html="item.value" :title="item.value" :data-option="item.opNameId+':'+item.opValueId"   @click.bind(this)="chooseOther(item.opNameId+':'+item.opValueId)"></div>
                   </dd>
               </dl>
           </div>
@@ -79,6 +96,13 @@
   </div>
 </template>
 <script>
+//选项卡
+// import { Navbar, TabItem } from 'mint-ui';
+// import { TabContainer, TabContainerItem } from 'mint-ui';
+// Vue.component(TabContainer.name, TabContainer);
+// Vue.component(TabContainerItem.name, TabContainerItem);
+// Vue.component(Navbar.name, Navbar);
+// Vue.component(TabItem.name, TabItem);
 
 import Header from "../common/Header.vue";
 import Parameter from "./DetailParameter.vue";
@@ -106,26 +130,27 @@ export default {
       }
     },
     methods: {
-        chooseColor:function(){
-            var color = document.getElementsByClassName('color');
-            var div = color.children;
-            // color.children.className +=" active"
-            console.log(this.color);
-            for(var i = 0;i<this.$refs.asd.length;i++){}
+        chooseColor:function(col){
+            console.log(col);
+        },
+        chooseStyle:function(sty){
+            console.log(sty);
+        },
+        chooseOther:function(oth){
+            console.log(oth);
         }
 
     },
     mounted: function(){
        let id = this.$route.params.id
       let that = this;
-      // Indicator:Indicator.open({
-      //     text: '加载中...',
-      //     spinnerType: 'fading-circle'
-      // });
       axios.get({
+        //   Indicator:Indicator.open({
+        //       text: '加载中...',
+        //       spinnerType: 'fading-circle'
+        //   }),
         type: 'get',
         url: `proxy/app/item/${id}/exp?boxId=1041`,
-        // url: `proxy/app/item/300100/exp?boxId=1041`,
         callback: function(res){
           let data = res.data.data.detail.item;
 

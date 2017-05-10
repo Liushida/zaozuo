@@ -1,0 +1,7 @@
+#details{
+    @include flexbox();
+    @include flex-direction(column);
+    @include flex();
+    width: 100%;
+    height: 100%;
+}
