@@ -25,13 +25,10 @@ export default {
       axios.get({
         type: 'get',
         url: `proxy/app/item/${id}/exp?boxId=1041`,
-        // url: `proxy/app/item/300156/exp?boxId=1041`,
         callback: function(res){
           let date = res.data.data.params;
-        //   let num = date.length-1;
-        //   let data = date[num].contents[0].child.parameter
           that.list=that.list.concat(date);
-          console.log(date);
+        //   console.log(date);
         }
       })
     }

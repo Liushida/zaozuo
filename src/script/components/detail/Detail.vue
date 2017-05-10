@@ -24,10 +24,8 @@
                   <img :src="`http://img.zaozuo.com/${this.com.defaultBigImg}`" alt="">
               </div>
               <div class="showTitle">
-                  <h1>造作大先生沙发</h1>
-                  <p>
-                      Mr.Big Sofa
-                  </p>
+                  <h1 v-html="title.title"></h1>
+                  <p v-html="title.englishTitle"></p>
                   <div class="sAs">
                       <span>收藏</span>
                       <span>分享</span>
@@ -38,7 +36,11 @@
               <dl class="styleColor" v-if="color">
                   <dt>颜色</dt>
                   <dd class="color">
-                      <div class="" v-for="(item,index) in color" :title="item.value" :data-option="item.opNameId+':'+item.opValueId" @click="chooseColor()">
+                      <div
+                       v-for="(item,index) in color"
+                       :title="item.value" :data-option="item.opNameId+':'+item.opValueId"
+                       :class="'col-'+item.orderLong"
+                       @click="chooseColor()">
                           <img :src="`http://img.zaozuo.com/${item.img}`" alt="">
                       </div>
                   </dd>
@@ -50,7 +52,7 @@
                   </dd>
               </dl>
               <dl class="styleOther" v-if="other">
-                  <dt>沙发腿</dt>
+                  <dt>其他</dt>
                   <dd class="">
                       <div v-for="(item,index) in other" v-html="item.value" :title="item.value" :data-option="item.opNameId+':'+item.opValueId"></div>
                   </dd>
@@ -99,7 +101,8 @@ export default {
         com:{},
         show:[],
         img:[],
-        arr:[]
+        arr:[],
+        title:{}
       }
     },
     methods: {
@@ -107,7 +110,8 @@ export default {
             var color = document.getElementsByClassName('color');
             var div = color.children;
             // color.children.className +=" active"
-            // console.log(div);
+            console.log(this.color);
+            for(var i = 0;i<this.$refs.asd.length;i++){}
         }
 
     },
@@ -154,6 +158,7 @@ export default {
           that.show=that.show.concat(show);
           that.com = com;
           that.des = des;
+          that.title = data;
         //   console.log(color);
         // Indicator.colse();
         }
