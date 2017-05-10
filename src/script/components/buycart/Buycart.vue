@@ -21,9 +21,9 @@
 						</ul>
 					</div>
 					<div class="goods-nav">
-						<span @click="isShow"><i></i>编辑</span>
-						<span><i></i>删除</span>
-						<span><i></i>选中</span>
+						<span @click="isShow"><i><img src="/static/images/biz_order_cartlist_edit.png"/></i>编辑</span>
+						<span><i><img src="/static/images/biz_order_cartlist_del.png"/></i>删除</span>
+						<span><i><img src="/static/images/biz_order_cartlist_confirm.png"/></i>选中</span>
 					</div>
 				</li>
 				<li class="m-buycart-list-goods">

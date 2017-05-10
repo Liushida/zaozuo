@@ -38,6 +38,13 @@ module.exports = {
         pathRewrite: {
           '^/proxy': ''
         }
+      },
+      '/node':{
+        target: 'http://localhost:9000',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/node': ''
+        }
       }
     },
     // CSS Sourcemaps off by default because relative paths are "buggy"

@@ -112,10 +112,10 @@ export default {
     },
     mounted: function(){
       let that = this;
-      Indicator:Indicator.open({
-          text: '加载中...',
-          spinnerType: 'fading-circle'
-      });
+      // Indicator:Indicator.open({
+      //     text: '加载中...',
+      //     spinnerType: 'fading-circle'
+      // });
       axios.get({
         type: 'get',
         url: `proxy/app/item/300100/exp?boxId=1041`,
