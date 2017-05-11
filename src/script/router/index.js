@@ -12,12 +12,12 @@ import Register from '../components/mine/Register.vue'
 import Scene from '../components/list/Scene.vue'
 import We from '../components/list/We.vue'
 import Buycart from '../components/buycart/Buycart.vue'
+import Car from '../components/car/Car.vue'
 
 
 //测试,删除
 import Test from '../components/detail/test/Test.vue'
 import DetailParameter from "../components/detail/DetailParameter.vue"
-import DetailCanshu from "../components/detail/DetailCanshu.vue"
 
 Vue.use(Router)
 
@@ -80,10 +80,6 @@ export default new Router({
         component:DetailParameter
     },
     {
-        path:"/canshu",
-        component:DetailCanshu
-    },
-    {
       path:'/lr',
       component:Lr
     },
@@ -98,6 +94,10 @@ export default new Router({
     {
       path:'/buycart',
       component:Buycart
+    },
+    {
+      path:'/car',
+      component:Car
     }
   ]
 })

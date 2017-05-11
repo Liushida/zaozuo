@@ -1,4 +1,4 @@
-<template>	
+<template>
 	<div class="m-buycart-box">
 		<div class="m-buycart-header">
 			<div class="m-buycart-back"   @click="back"><img src="/static/images/biz_res_back_black.png"></div>
@@ -11,7 +11,7 @@
 						￥ <span>666</span>
 					</div>
 					<div class="goods-details">
-						<div class="goods-details-img"><img src="/static/images/biz_res_nav_me_pressed.png"></div>
+						<div class="goods-details-img"><img :src="dataList?dataList.data.detail.item_detail_shareImg:null"></div>
 						<ul class="goods-details-list">
 							<li>随行桌</li>
 							<li><b>颜色:</b><span><i>red</i></span></li>
@@ -24,46 +24,6 @@
 						<span @click="isShow"><i><img src="/static/images/biz_order_cartlist_edit.png"/></i>编辑</span>
 						<span><i><img src="/static/images/biz_order_cartlist_del.png"/></i>删除</span>
 						<span><i><img src="/static/images/biz_order_cartlist_confirm.png"/></i>选中</span>
-					</div>
-				</li>
-				<li class="m-buycart-list-goods">
-					<div class="goods-header">
-						￥ <span>666</span>
-					</div>
-					<div class="goods-details">
-						<div class="goods-details-img"><img src="/static/images/biz_res_nav_me_pressed.png"></div>
-						<ul class="goods-details-list">
-							<li>随行桌</li>
-							<li><b>颜色:</b><span><i>red</i></span></li>
-							<li><b>数量:</b><span><i>1</i>件</span></li>
-							<li><b>单价:</b><span>￥<i>2599</i></span></li>
-							<li><b>预计发货:</b><span><i>2017-05-05</i></span></li>
-						</ul>
-					</div>
-					<div class="goods-nav">
-						<span><i></i>编辑</span>
-						<span><i></i>删除</span>
-						<span><i></i>选中</span>
-					</div>
-				</li>
-				<li class="m-buycart-list-goods">
-					<div class="goods-header">
-						￥ <span>666</span>
-					</div>
-					<div class="goods-details">
-						<div class="goods-details-img"><img src="/static/images/biz_res_nav_me_pressed.png"></div>
-						<ul class="goods-details-list">
-							<li>随行桌</li>
-							<li><b>颜色:</b><span><i>red</i></span></li>
-							<li><b>数量:</b><span><i>1</i>件</span></li>
-							<li><b>单价:</b><span>￥<i>2599</i></span></li>
-							<li><b>预计发货:</b><span><i>2017-05-05</i></span></li>
-						</ul>
-					</div>
-					<div class="goods-nav">
-						<span><i></i>编辑</span>
-						<span><i></i>删除</span>
-						<span><i></i>选中</span>
 					</div>
 				</li>
 			</ul>
@@ -105,34 +65,49 @@
 	          <li>三人座</li>
 	          <li>转角三人座</li>
 	        </ul>
-	      </div>   
+	      </div>
 	      <div class="m-popup-btn">
 	        确认修改
 	      </div>
 	    </div>
 	  </mt-popup>
-	</div>	
+	</div>
 </template>
 
 <script type="text/javascript">
-import Vue from 'vue';
-import { Popup } from 'mint-ui';
-Vue.component(Popup.name, Popup);
+	import Axios from '../../utils/axios.js'
+
+	import Vue from 'vue';
+
+	import { Popup } from 'mint-ui';
+
+	Vue.component(Popup.name, Popup);
 export default {
-  name:'',
-  methods:{
-    back: function(){
-      this.$router.go(-1);
-    },
-    isShow: function(){
-    	this.popupVisible = true;
-    } 
-  },
-  data: function(){
-  	return{
-  		popupVisible: false
-  	}
-  }
+	name:'',
+	data: function(){
+		return{
+			popupVisible: false,
+			dataList:null
+		}
+	},
+	methods:{
+		back: function(){
+			this.$router.go(-1);
+		},
+		isShow: function(){
+			this.popupVisible = true;
+		}
+	},
+	mounted:function(){``
+		let that = this
+		Axios.get({
+			url: `proxy/app/item/300150`,
+			callback:function(res){
+				that.dataList = res.data
+				console.log(res.data)
+			}
+		})
+	}
 }
 
 

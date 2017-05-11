@@ -16,7 +16,7 @@
         </div>
       </router-link>
       <div class="item-child"  v-if="hide">
-        <div class="detail" v-if="item.children.length <= 3 && item.hasDetail">
+        <div class="detail" v-if="item.hasDetail && item.children.length == 3">
           <router-link :to="`/detail/${item.goTo.refId}`" tag="div" class="detial-item" v-for="(value, index) in item.children" :key="index">
             <img :src="`http://img.zaozuo.com/${value.headImg}`" alt="">
           </router-link>
@@ -34,7 +34,7 @@
         </div>
       </div>
       <div class="item-child"  v-else>
-        <div class="detail" v-if="item.children.length <= 3 && item.hasDetail">
+        <div class="detail" v-if="item.children.length == 3 && item.hasDetail">
           <router-link :to="`/detail/${item.goTo.refId}`" tag="div" class="detial-item" v-for="(value, index) in item.children" :key="index">
             <img :src="`http://img.zaozuo.com/${value.headImg}`" alt="">
           </router-link>

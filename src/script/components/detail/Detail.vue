@@ -74,7 +74,6 @@
           <div class="ImgShow">
 
           </div>
-          <Canshu />
       </div>
   </div>
 </template>
@@ -82,10 +81,8 @@
 
 import Header from "../common/Header.vue";
 import Parameter from "./DetailParameter.vue";
-import Canshu from "./DetailCanshu.vue";
 Vue.component("Header", Header);
 Vue.component("Parameter", Parameter);
-Vue.component("Canshu", Canshu);
 import Vue from "vue"
 import axios from "../../utils/axios.js"
 import { Indicator } from 'mint-ui';
