@@ -1,6 +1,6 @@
 <template>
   <div id="">
-    {{title}}
+
   </div>
 </template>
 <script>
@@ -10,6 +10,12 @@ export default {
     return {
       title: this.$store.state.title
     }
+  },
+  methods: {
+
+  },
+  mounted: function(){
+    console.log(localStorage.getItem("jlj"));
   }
 }
 </script>

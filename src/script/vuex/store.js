@@ -5,11 +5,11 @@ Vue.use(Vuex);
 
 let store = new Vuex.Store({
   state: {
-    title: 'wzh'
+    items: []
   },
   mutations: {
-    change: (state, payload) => {
-      state.title = payload.title
+    init: (state, payload) => {
+      state.items = payload.items
     }
   }
 })
