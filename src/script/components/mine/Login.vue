@@ -8,18 +8,29 @@
 			<div class="m-lg-lg" @click="login">登录</div>
 			<div class="m-lg-mm"><img src="/static/images/biz_account_forget_select.png">忘记密码</div>	
 		</div>
+		<mt-popup
+		  v-model="popupVisible"
+		  popup-transition="popup-fade">
+		  <div v-text="state"></div>
+		</mt-popup>
 	</div>
 </template>
 
 <script type="text/javascript">
-import axios from 'axios'
-import Axios from '../../utils/axios.js'
-import Qs from 'qs'
+	import Vue from 'vue';
+	import axios from 'axios'
+	import Axios from '../../utils/axios.js'
+	import Qs from 'qs'
+	import { Indicator } from 'mint-ui';
+	import { Popup } from 'mint-ui';
+	Vue.component(Popup.name, Popup);
 export default {
 	data(){
 		return({
 			username:'',
-			password: ''
+			password: '',
+			popupVisible:false,
+			state:''
 		})
 	},
 	mounted:function(){
@@ -30,20 +41,29 @@ export default {
 	      this.$router.go(-1);
 	    },
 	    login:function(){
-	    	// console.log(this)
-	    	let that = this
-	    	axios.post('/node/users/login', Qs.stringify({username: this.username, password:this.password}), {
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-          }
-        }).then((res)=>{
-        	// console.log(res.data)
-        	if(res.data=='1'){
-          		that.$router.push('./mine')
-        	}else{
-        		console.log('登录失败')
-        	}
-        })
+	    	let that = this;
+
+	    	Indicator.open({
+			  text: '加载中...',
+			  spinnerType: 'fading-circle'
+			});
+	    	axios.post(
+	    		'/node/users/login',
+	    		 Qs.stringify({username: this.username, password:this.password}), 
+	    		 {headers: {'Content-Type': 'application/x-www-form-urlencoded'}}
+	    	).then((res)=>{
+	        	// console.log(res.data)
+	        	if(res.data=='1'){
+	          		Indicator.close();
+	          		that.state="登陆成功";
+		        	localStorage.setItem('username',that.username);
+	          		that.$router.push('/mine')
+	        	}else{
+	        		Indicator.close();
+	          		that.state="登陆失败";
+	        		that.popupVisible=true;
+	        	}
+	        })
 		}
 	}
 }
