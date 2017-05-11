@@ -4,7 +4,7 @@
 		<div class="m-rg-logo">手机注册</div>
 		<div class="m-rg-pd">
 			<div class="m-rg-user"><input type="text"  placeholder="手机号" v-model="username"></div>
-			<div class="m-rg-code"><input type="text"  placeholder="验证码" ><span @click="getcode">发送</span></div>
+			<div class="m-rg-code"><input type="text"  placeholder="验证码" v-model="usercode"><span @click="getcode">发送</span></div>
 			<div class="m-rg-pas"><input type="password"  placeholder="请输入6-12位数字或字母密码" v-model="password"></div>
 			<div class="m-rg-rg" @click="register">注册</div>
 			<div class="m-rg-mm"><img src="/static/images/biz_account_forget_select.png">邮箱注册</div>	
@@ -32,7 +32,8 @@ export default {
 			password: '',
 			popupVisible:false,
 			state:'',
-			code:''
+			code:'',
+			usercode:''
 		})
 	},
 	methods:{
@@ -40,29 +41,32 @@ export default {
 	      this.$router.go(-1);
 	    },
 	    register:function(){
-	    	let that = this;
-
-	    	Indicator.open({
-			  text: '注册中...',
-			  spinnerType: 'fading-circle'
-			});
-	    	axios.post('/node/users/registor', Qs.stringify({username: this.username, password:this.password}), {
-	          headers: {
-	            'Content-Type': 'application/x-www-form-urlencoded'
-	          }
-	        }).then((res)=>{
-	        	if(res.data=='2'){
-	        		localStorage.setItem('username',that.username);
-          			that.popupVisible=true;
-	        		Indicator.close();
-	        		that.state="注册成功，为您跳转登录页面";
-          			that.$router.push('./login');
-	        	}else{
-	        		Indicator.close();
-	        		that.state="注册失败";
-          			that.popupVisible=true;
-	        	}
-	        })
+		    let that = this;
+	    	if(that.usercode==that.code){
+		    	Indicator.open({
+				  text: '注册中...',
+				  spinnerType: 'fading-circle'
+				});
+		    	axios.post('/node/users/registor', Qs.stringify({username: this.username, password:this.password}), {
+		          headers: {
+		            'Content-Type': 'application/x-www-form-urlencoded'
+		          }
+		        }).then((res)=>{
+		        	if(res.data=='2'){
+	          			that.popupVisible=true;
+		        		Indicator.close();
+		        		that.state="注册成功，为您跳转登录页面";
+	          			that.$router.push('./login');
+		        	}else{
+		        		Indicator.close();
+		        		that.state="注册失败";
+	          			that.popupVisible=true;
+		        	}
+		        })
+	    	}else{
+	    		that.popupVisible=true;
+        		that.state="验证码错误！";
+	    	}
 		},
 		getcode:function(){
 			let that=this;
@@ -70,8 +74,10 @@ export default {
 			axios.post('/tag/sms.php', Qs.stringify({mobile:that.username})
 			)
 			.then(function(res){
-				console.log(res.data.mobile_code)
-				that.code=res.data.mobile_code
+				// console.log(1);
+				// console.log(res);
+				that.code=res.data.slice(35,39);
+				// console.log(that.code);
 			})
 		}
 

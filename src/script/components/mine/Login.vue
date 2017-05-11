@@ -56,6 +56,7 @@ export default {
 	        	if(res.data=='1'){
 	          		Indicator.close();
 	          		that.state="登陆成功";
+		        	localStorage.setItem('username',that.username);
 	          		that.$router.push('/mine')
 	        	}else{
 	        		Indicator.close();
