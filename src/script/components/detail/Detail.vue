@@ -4,7 +4,8 @@
       <div class="scroll">
           <div id='detail'>
               <div class="img">
-                  <img :src="`http://img.zaozuo.com/${chooseWhoImg}`" alt="">
+                        <img v-if="chooseWhoImg!=''" :src="`http://img.zaozuo.com/${chooseWhoImg}`" alt="">
+                        <img v-else :src="`http://img.zaozuo.com/${com.defaultBigImg}`" alt="">
               </div>
               <div class="checkBox">
                   <div class="optionName" v-for="(item, index) in optionNames">
