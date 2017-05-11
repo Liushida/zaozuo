@@ -1,7 +1,7 @@
 <template>
   <div id="details">
       <Header :canBack="true"/>
-      <ul class="nav">
+      <!-- <ul class="nav">
           <li class="active">
               <router-link to="detail_index" active-class="active">作品</router-link>
           </li>
@@ -17,7 +17,7 @@
           <li>
               <router-link to="/home" active-class="active">套餐</router-link>
           </li>
-      </ul>
+      </ul> -->
       <!-- <mt-navbar v-model="selected">
           <mt-tab-item id="1">选项一</mt-tab-item>
           <mt-tab-item id="2">选项二</mt-tab-item>
@@ -35,45 +35,24 @@
           </mt-tab-container-item>
     </mt-tab-container> -->
       <div class="scroll">
-          <div class="showdetail">
-              <div class="showImg">
-                  <img :src="`http://img.zaozuo.com/${this.com.defaultBigImg}`" alt="">
+          <div id='detail'>
+              <div class="img">
+                  <img :src="`http://img.zaozuo.com/${chooseWhoImg}`" alt="">
               </div>
-              <div class="showTitle">
-                  <h1 v-html="title.title"></h1>
-                  <p v-html="title.englishTitle"></p>
-                  <div class="sAs">
-                      <span>收藏</span>
-                      <span>分享</span>
+              <div class="checkBox">
+                  <div class="optionName" v-for="(item, index) in optionNames">
+                      <span v-text="item.name"></span>
+                      <div class="optionValueBox">
+                          <div class="optionVale" v-for="(value,inde) in optionValues" v-if="value.opNameId == item.opNameId"
+                          @click="chooseOption(item.opNameId,value.opValueId)">
+                            <div class="" v-if="value.img != ''">
+                                <img :src="`http://img.zaozuo.com/${value.img}`" alt="">
+                            </div>
+                              <span v-else v-text="value.value"></span>
+                          </div>
+                      </div>
                   </div>
               </div>
-          </div>
-          <div class="chooseStyle">
-              <dl class="styleColor" v-if="color">
-                  <dt>颜色</dt>
-                  <dd class="color">
-                      <div
-                       v-for="(item,index) in color"
-                       :title="item.value" :data-option="item.opNameId+':'+item.opValueId"
-                       :class=" 'col-'+item.orderLong"
-                       @click.bind(this)="chooseColor(item.opNameId+':'+item.opValueId)">
-                          <img :src="`http://img.zaozuo.com/${item.img}`" alt="">
-                      </div>
-                  </dd>
-              </dl>
-              <dl class="styleStyle" v-if="style">
-                  <dt>款型</dt>
-                  <dd class="">
-                      <div v-for="(style,index) in style" v-html="style.value" :title="style.value" :data-option="style.opNameId+':'+style.opValueId"
-                       @click.bind(this)="chooseStyle(style.opNameId+':'+style.opValueId)">  </div>
-                  </dd>
-              </dl>
-              <dl class="styleOther" v-if="other">
-                  <dt>其他</dt>
-                  <dd class="">
-                      <div v-for="(item,index) in other" v-html="item.value" :title="item.value" :data-option="item.opNameId+':'+item.opValueId"   @click.bind(this)="chooseOther(item.opNameId+':'+item.opValueId)"></div>
-                  </dd>
-              </dl>
           </div>
           <div class="showVideo">
               <img :src="`http://img.zaozuo.com/${img.designer_bgimgwap}`" alt="">
@@ -118,9 +97,11 @@ export default {
     data: function data() {
       return {
         list: [],
-        color:[],
-        style:[],
-        other:[],
+        checkedImgs:{},
+        optionNames: [],
+        optionValues:[],
+        chooseWho:{},
+        chooseWhoImg:'',
         des:{},
         com:{},
         show:[],
@@ -130,16 +111,31 @@ export default {
       }
     },
     methods: {
-        chooseColor:function(col){
-            console.log(col);
+        chooseOption: function(optName,optValue){
+            let obj = {}
+            obj[optName] = optValue;
+            this.chooseWho = this.objToOne(this.chooseWho,obj);
+            this.toStr();
         },
-        chooseStyle:function(sty){
-            console.log(sty);
-        },
-        chooseOther:function(oth){
-            console.log(oth);
+        objToOne: function(obj1, obj2){
+          let res = {}
+          for(let i in obj1){
+            res[i] = obj1[i]
+          }
+          for (let p in obj2){
+            res[p]=obj2[p];
+          }
+          return res;
+      },
+      toStr: function(){
+        let strrr = ';'
+        for(let key in this.chooseWho){
+            let str = key + ':' + this.chooseWho[key] +";";
+            strrr +=str;
         }
 
+        this.chooseWhoImg = this.checkedImgs[strrr].skuImg
+     }
     },
     mounted: function(){
        let id = this.$route.params.id
@@ -152,30 +148,21 @@ export default {
         type: 'get',
         url: `proxy/app/item/${id}/exp?boxId=1041`,
         callback: function(res){
-          let data = res.data.data.detail.item;
-
-          //获取颜色,款式,其他要求
-          let boom = res.data.data.name2values;
-          let arr = []
-          let i = 0;
-          for(let key in boom){
-            arr[i] = boom[key]
-            i++;
-          }
-          let color = arr[0];
-          let style= arr[1];
-          let other= arr[2];
-          color == true ? color.concat(color) : false;
-          style == true ? style.concat(style) : false;
-          other == true ? other.concat(other) : false;
-          that.color = color;
-          that.style = style;
-          that.other = other;
-          //获取颜色款式其他  结束
           let des= res.data.data.designerInf;
           let com= res.data.data;
           let show =com.sizeCharts;
-
+          let data = res.data.data.detail.item;
+          that.checkedImgs = data.option2Sku
+          that.optionNames = that.optionNames.concat(data.optionNames);
+          that.optionValues = that.optionValues.concat(data.optionValues);
+        //   let init = ';';
+        //   that.optionNames.forEach((item) => {
+        //         init += itemId + ':';
+        //         let a = that.optionValues.filter((value) => {
+        //                 return value.opNameId == item.opNameId
+        //         })[0]
+        //         console.log(a)
+        //   })
           let img =com.designerExtraInfo;
           that.img = img;
 
@@ -185,8 +172,8 @@ export default {
           that.des = des;
           that.title = data;
         //   console.log(color);
-        // Indicator.colse();
-        }
+        Indicator:Indicator.colse();
+}
       })
     }
 }
