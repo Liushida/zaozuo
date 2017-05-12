@@ -35,7 +35,6 @@
               </div>
           </div>
           <Parameter />
-          <Canshu />
           <Talk />
       </div>
   </div>
@@ -43,11 +42,9 @@
 <script>
 import Header from "../common/Header.vue";
 import Parameter from "./DetailParameter.vue";
-import Canshu from "./DetailCanshu.vue";
 import Talk from "./DetailTalk.vue";
 Vue.component("Header", Header);
 Vue.component("Parameter", Parameter);
-Vue.component("Canshu", Canshu);
 Vue.component("Talk", Talk);
 import Vue from "vue"
 import axios from "../../utils/axios.js"
