@@ -5,11 +5,15 @@ Vue.use(Vuex);
 
 let store = new Vuex.Store({
   state: {
-    items: []
+    items: [],
+    buyNumObj: {}
   },
   mutations: {
-    init: (state, payload) => {
+    initItems: (state, payload) => {
       state.items = payload.items
+    },
+    initBuyNum: (state, payload) => {
+      state.buyNumObj = payload.buyNumObj
     }
   }
 })
