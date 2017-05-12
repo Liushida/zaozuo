@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import Index from '../components/list/Index.vue'
 import Home from '../components/list/Home.vue'
 import Search from '../components/list/Search.vue'
-import Detail from '../components/detail/Detail.vue'
+import Detail from '../components/detail/detail.vue'
 import DetailIndex from '../components/detail/DetailIndex.vue'
 import Mine from '../components/mine/mine.vue'
 import Lr from '../components/mine/Lr.vue'
@@ -61,14 +61,6 @@ export default new Router({
     {
       path: '/detail/:id',
       component: Detail
-    //   ,
-    //   redirect:Detail,
-    //   children:[
-    //       {
-    //           path:"detail_index",
-    //           component:DetailIndex
-    //       }
-    //   ]
     },
     {
         //测试

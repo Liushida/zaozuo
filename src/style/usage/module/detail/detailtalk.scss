@@ -1,0 +1,79 @@
+.share{
+        margin-top: .15rem;
+        background: #fff;
+        padding:.16rem;
+        width: 100%;
+        h1{
+                margin: .15rem 0;
+                font-size: .21rem;
+                line-height: .3rem;
+                text-align: center;
+        }
+        .main{
+                @include border(0 0 1px 0,#999,solid);
+                padding:.1rem 0;
+                .userMsg{
+                        @include flexbox();
+                        .circle{
+                                width: .53rem;
+                                height: .53rem;
+                                border-radius: 50%;
+                                overflow: hidden;
+                                img{
+                                        width:100%;
+                                        height: 100%;
+                                }
+                        }
+                        .Msg{
+                                @include flex();
+                                @include flexbox();
+                                @include justify-content(space-between);
+                                padding-left: .05rem;
+                                .MsgL{
+                                        img{
+                                                width: .28rem;
+                                                height: .14rem;
+                                        }
+                                }
+                                img{
+                                        width: .7rem;
+                                        height: .23rem;
+                                }
+                        }
+                }
+                .PL{
+                        padding-left: .58rem;
+                        .pingjia{
+                                padding: .05rem;
+                                p{
+                                        text-indent: 2em;
+                                        color: #999;
+                                }
+                                ul{
+                                        @include flexbox();
+                                        li{
+                                                width: .53rem;
+                                                height:.53rem;
+                                                margin: 0.1rem .1rem 0 0;
+                                                img{
+                                                        width: 100%;
+                                                        height: 100%;
+                                                }
+                                        }
+                                }
+                        }
+                        .reply{
+                                margin-top: .1rem;
+                                background: #f9f9f9;
+                                padding: .09rem;
+                                color: #a1a1a1;
+                                b{
+                                        color: #000;
+                                }
+                                p{
+                                        text-indent: 2em;
+                                }
+                        }
+                }
+        }
+}

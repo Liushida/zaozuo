@@ -45,6 +45,13 @@ module.exports = {
         pathRewrite: {
           '^/node': ''
         }
+      },
+      '/tag':{
+        target: 'http://zdabao.applinzi.com',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/tag': ''
+        }
       }
     },
     // CSS Sourcemaps off by default because relative paths are "buggy"
