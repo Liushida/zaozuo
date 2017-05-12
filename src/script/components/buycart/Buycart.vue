@@ -16,7 +16,7 @@
 							<li>随行桌</li>
 							<li><b>颜色:</b><span><i>red</i></span></li>
 							<li><b>数量:</b><span><i>{{this.cartNum}}</i>件</span></li>
-							<li><b>单价:</b><span>￥<i>{{dataList.data.detail.item.displayPrice}}</i></span></li>
+							<li><b>单价:</b><span>￥<i>{{dataList?dataList.data.detail.item.displayPrice:null}}</i></span></li>
 							<li><b>预计发货:</b><span><i>2017-05-05</i></span></li>
 						</ul>
 					</div>
