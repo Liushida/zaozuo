@@ -12,6 +12,7 @@ import Register from '../components/mine/Register.vue'
 import Scene from '../components/list/Scene.vue'
 import We from '../components/list/We.vue'
 import Buycart from '../components/buycart/Buycart.vue'
+import Car from '../components/car/Car.vue'
 
 
 //测试,删除
@@ -85,6 +86,10 @@ export default new Router({
     {
       path:'/buycart',
       component:Buycart
+    },
+    {
+      path:'/car',
+      component:Car
     }
   ]
 })

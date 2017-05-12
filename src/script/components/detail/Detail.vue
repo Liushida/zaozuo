@@ -42,6 +42,7 @@
 <script>
 import Header from "../common/Header.vue";
 import Parameter from "./DetailParameter.vue";
+
 import Talk from "./DetailTalk.vue";
 Vue.component("Header", Header);
 Vue.component("Parameter", Parameter);

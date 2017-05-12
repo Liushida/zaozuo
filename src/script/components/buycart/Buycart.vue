@@ -1,4 +1,4 @@
-<template>	
+<template>
 	<div class="m-buycart-box">
 		<div class="m-buycart-header">
 			<div class="m-buycart-back"   @click="back"><img src="/static/images/biz_res_back_black.png"></div>
@@ -66,13 +66,13 @@
 	          <li>三人座</li>
 	          <li>转角三人座</li>
 	        </ul>
-	      </div>   
+	      </div>
 	      <div class="m-popup-btn">
 	        确认修改
 	      </div>
 	    </div>
 	  </mt-popup>
-	</div>	
+	</div>
 </template>
 
 <script type="text/javascript">
@@ -88,10 +88,9 @@ export default {
 	name:'',
 	data: function(){
 		return{
-			dataList:null,
-			popupVisible:false,
-			cartNum:7
-		}	
+			popupVisible: false,
+			dataList:null
+		}
 	},
 	methods:{
 		back: function(){
@@ -99,16 +98,6 @@ export default {
 		},
 		isShow: function(){
 			this.popupVisible = true;
-		},
-		add:function(){
-			this.cartNum++
-		},
-		delet:function(){
-			if(this.cartNum<=0){
-				this.cartNum = 0
-			}else{
-				this.cartNum--
-			}
 		}
 	},
 	mounted:function(){
@@ -117,14 +106,9 @@ export default {
 			url: `proxy/app/item/300150`,
 			callback:function(res){
 				that.dataList = res.data
-				// console.log(res.data)
+				console.log(res.data)
 			}
 		})
-	},
-	updated:function(){
-		// console.log(this.popupVisible)
-
 	}
-
 }
 </script>
