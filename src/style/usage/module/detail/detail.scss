@@ -28,6 +28,29 @@
             }
         }
     }
+    .buy{
+        @include flexbox();
+        position: fixed;
+        width: 95%;
+        height: .53rem;
+        bottom: 0.1rem;
+        left: 2.5%;
+        background: #000;
+        z-index: 999;
+        color: #fff;
+        padding: .05rem 0;
+        div{
+                @include flex();
+                text-align: center;
+                line-height: .26rem;
+                @include border(0 1px 0 0,#fff,solid);
+        }
+        img{
+                width: .5rem;
+                height: .5rem;
+                margin: 0 .05rem;
+        }
+    }
     .scroll{
         width: 100% !important;
         height: 100%;
