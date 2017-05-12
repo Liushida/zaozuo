@@ -14,16 +14,13 @@
                 </dd>
             </dl>
         </div>
-        <Canshu />
     </div>
 </template>
 
 <script>
 import Vue from "vue"
 import Header from "../common/Header.vue";
-import Canshu from "./DetailCanshu.vue";
 Vue.component("Header", Header);
-Vue.component("Canshu", Canshu);
 import axios from "../../utils/axios.js"
 export default {
     name: "parameter",

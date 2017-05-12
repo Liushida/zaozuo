@@ -1,7 +1,7 @@
 <template>
   <div id="details">
       <Header :canBack="true"/>
-      <ul class="nav">
+      <!-- <ul class="nav">
           <li class="active">
               <router-link to="detail_index" active-class="active">作品</router-link>
           </li>
@@ -17,7 +17,7 @@
           <li>
               <router-link to="/home" active-class="active">套餐</router-link>
           </li>
-      </ul>
+      </ul> -->
       <div class="scroll">
           <div class="showdetail">
               <div class="showImg">
@@ -74,7 +74,6 @@
           <div class="ImgShow">
 
           </div>
-          <Canshu />
       </div>
   </div>
 </template>
@@ -82,10 +81,8 @@
 
 import Header from "../common/Header.vue";
 import Parameter from "./DetailParameter.vue";
-import Canshu from "./DetailCanshu.vue";
 Vue.component("Header", Header);
 Vue.component("Parameter", Parameter);
-Vue.component("Canshu", Canshu);
 import Vue from "vue"
 import axios from "../../utils/axios.js"
 import { Indicator } from 'mint-ui';
